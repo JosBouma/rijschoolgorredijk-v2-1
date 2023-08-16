@@ -1,0 +1,28 @@
+{
+  "id": "simple_text_block",
+  "type": "SharedSlice",
+  "name": "SimpleTextBlock",
+  "description": "SimpleTextBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,strong,em,list-item,o-list-item"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

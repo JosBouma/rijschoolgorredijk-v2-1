@@ -1,0 +1,27 @@
+{
+  "id": "footer",
+  "label": "Footer",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": { "label": "Footer", "placeholder": "" }
+      },
+      "image": {
+        "type": "Image",
+        "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+      },
+      "termsconditions": {
+        "type": "Link",
+        "config": {
+          "label": "TermsConditions",
+          "placeholder": "",
+          "select": "media"
+        }
+      }
+    }
+  }
+}

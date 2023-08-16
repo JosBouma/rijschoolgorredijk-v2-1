@@ -1,0 +1,70 @@
+:root {
+    --color-primary: #0077b6;
+    --color-secondary: #caf0f8;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+label,
+input,
+textarea,
+select {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+#__nuxt {
+    min-height: 100%;
+}
+
+p {
+    font-size: 1.15rem;
+    line-height: 1.3;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.button {
+    display: inline-block;
+    width: fit-content;
+    margin: 0 auto;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    transition: all 0.2s ease-in;
+    text-align: center;
+}
+
+.button:hover {
+    background: var(--color-secondary);
+    color: #000;
+}
+
+.page {
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+}
