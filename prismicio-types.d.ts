@@ -112,7 +112,10 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
-type IndexDocumentDataSlicesSlice = HeroSlice | SimpleTextBlockSlice;
+type IndexDocumentDataSlicesSlice =
+  | HeroSlice
+  | SimpleTextBlockSlice
+  | GridTwoColumnsSlice;
 
 /**
  * Content for Index documents
@@ -261,6 +264,101 @@ export type AllDocumentTypes =
   | SubcategoryDocument;
 
 /**
+ * Primary content in *GridTwoColumns → Primary*
+ */
+export interface GridTwoColumnsSliceDefaultPrimary {
+  /**
+   * Image field in *GridTwoColumns → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_two_columns.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Content field in *GridTwoColumns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_two_columns.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Default variation for GridTwoColumns Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridTwoColumnsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GridTwoColumnsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *GridTwoColumns → Primary*
+ */
+export interface GridTwoColumnsSliceTextLeftPrimary {
+  /**
+   * Image field in *GridTwoColumns → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_two_columns.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Content field in *GridTwoColumns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_two_columns.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Text left variation for GridTwoColumns Slice
+ *
+ * - **API ID**: `textLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridTwoColumnsSliceTextLeft = prismic.SharedSliceVariation<
+  "textLeft",
+  Simplify<GridTwoColumnsSliceTextLeftPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GridTwoColumns*
+ */
+type GridTwoColumnsSliceVariation =
+  | GridTwoColumnsSliceDefault
+  | GridTwoColumnsSliceTextLeft;
+
+/**
+ * GridTwoColumns Shared Slice
+ *
+ * - **API ID**: `grid_two_columns`
+ * - **Description**: GridTwoColumns
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridTwoColumnsSlice = prismic.SharedSlice<
+  "grid_two_columns",
+  GridTwoColumnsSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -379,6 +477,12 @@ declare module "@prismicio/client" {
       SubcategoryDocument,
       SubcategoryDocumentData,
       AllDocumentTypes,
+      GridTwoColumnsSlice,
+      GridTwoColumnsSliceDefaultPrimary,
+      GridTwoColumnsSliceTextLeftPrimary,
+      GridTwoColumnsSliceVariation,
+      GridTwoColumnsSliceDefault,
+      GridTwoColumnsSliceTextLeft,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

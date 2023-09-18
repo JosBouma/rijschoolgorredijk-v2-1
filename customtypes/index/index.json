@@ -16,7 +16,8 @@
         "config": {
           "choices": {
             "hero": { "type": "SharedSlice" },
-            "simple_text_block": { "type": "SharedSlice" }
+            "simple_text_block": { "type": "SharedSlice" },
+            "grid_two_columns": { "type": "SharedSlice" }
           }
         }
       }

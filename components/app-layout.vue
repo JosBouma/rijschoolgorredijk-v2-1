@@ -6,8 +6,8 @@
     margin: 0 auto;
 }
 
-#app-layout .content {
-  padding-top: 12rem;
+#app-layout>.content {
+    padding-top: 12rem;
 }
 </style>
 

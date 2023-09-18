@@ -60,7 +60,7 @@ const { data: footer } = await useAsyncData('footer', () => {
 
 .mid-wrapper {
     background: var(--color-secondary);
-    margin: 6rem 0;
+    margin: 6rem 0 2rem 0;
     padding: 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -84,6 +84,28 @@ const { data: footer } = await useAsyncData('footer', () => {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.mid-wrapper .socials a svg,
+.mid-wrapper .socials a svg * {
+    color: var(--color-primary);
+}
+
+.bottom-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10%;
+    row-gap: 1rem;
+    border-bottom: 1px solid rgb(222, 222, 222);
+}
+
+.bottom-wrapper a {
+    color: var(--color-primary);
+    font-size: 1.125rem;
 }
 
 @media screen and (max-width: 60rem) {
@@ -139,7 +161,7 @@ const { data: footer } = await useAsyncData('footer', () => {
             </div>
         </div>
         <div class="bottom-wrapper">
-            <nuxt-link>Algemene voorwaarden</nuxt-link>
+            <nuxt-link :to="footer?.data.termsconditions.url">Algemene voorwaarden</nuxt-link>
             <p>© Rijschool Gorredijk {{ new Date().getFullYear() }}</p>
         </div>
     </footer>
