@@ -13,9 +13,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="page">
-    <app-nav></app-nav>
+  <app-layout>
     <SliceZone wrapper="main" :slices="page?.data.slices ?? []" :components="components" />
-    <app-footer></app-footer>
-  </div>
+  </app-layout>
 </template>

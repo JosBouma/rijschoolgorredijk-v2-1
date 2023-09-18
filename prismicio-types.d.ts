@@ -5,6 +5,53 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *Category → Items*
+ */
+export interface CategoryDocumentDataItemsItem {
+  /**
+   * Item field in *Category → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.items[].item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  item: prismic.ContentRelationshipField<"subcategory">;
+}
+
+/**
+ * Content for Category documents
+ */
+interface CategoryDocumentData {
+  /**
+   * Items field in *Category*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<CategoryDocumentDataItemsItem>>;
+}
+
+/**
+ * Category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategoryDocumentData>,
+    "category",
+    Lang
+  >;
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -29,6 +76,28 @@ interface FooterDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   termsconditions: prismic.LinkToMediaField;
+
+  /**
+   * Facebook field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.facebook
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  facebook: prismic.LinkField;
+
+  /**
+   * Instagram field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField;
 }
 
 /**
@@ -105,7 +174,91 @@ interface IndexDocumentData {
 export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
-export type AllDocumentTypes = FooterDocument | IndexDocument;
+/**
+ * Content for Product documents
+ */
+interface ProductDocumentData {
+  /**
+   * Title field in *Product*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Product document from Prismic
+ *
+ * - **API ID**: `product`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductDocumentData>,
+    "product",
+    Lang
+  >;
+
+/**
+ * Item in *Subcategory → Items*
+ */
+export interface SubcategoryDocumentDataItemsItem {
+  /**
+   * Product field in *Subcategory → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: subcategory.items[].product
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  product: prismic.ContentRelationshipField<"product">;
+}
+
+/**
+ * Content for Subcategory documents
+ */
+interface SubcategoryDocumentData {
+  /**
+   * Items field in *Subcategory*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: subcategory.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<SubcategoryDocumentDataItemsItem>>;
+}
+
+/**
+ * Subcategory document from Prismic
+ *
+ * - **API ID**: `subcategory`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SubcategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SubcategoryDocumentData>,
+    "subcategory",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | CategoryDocument
+  | FooterDocument
+  | IndexDocument
+  | ProductDocument
+  | SubcategoryDocument;
 
 /**
  * Primary content in *Hero → Primary*
@@ -214,11 +367,17 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CategoryDocument,
+      CategoryDocumentData,
       FooterDocument,
       FooterDocumentData,
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
+      ProductDocument,
+      ProductDocumentData,
+      SubcategoryDocument,
+      SubcategoryDocumentData,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,

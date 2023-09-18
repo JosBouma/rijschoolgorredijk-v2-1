@@ -10,16 +10,23 @@ const isOpen = useState('hamburgerOpen');
     background: #fff;
     background: linear-gradient(90deg, rgba(255,255,255,1) 25%, rgba(202,240,248,1) 45%, rgba(202,240,248,1) 55%, rgba(255,255,255,1) 75%);
     top: 0;
-    left: 0;
-    width: 100%;
+    width: inherit;
+    max-width: var(--app-max-width);
     align-items: center;
     gap: 4rem;
     border-bottom: 1px solid #c6c6c6;
 }
 
-.app-nav>a img {
-    width: 160px;
-    margin: 1rem;
+.app-nav>a svg {
+    width: 100%;
+    max-width: 12rem;
+    padding: 1rem;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+}
+
+.app-nav>a svg:hover {
+    transform: scale(1.15);
 }
 
 .app-nav ul {
@@ -30,17 +37,6 @@ const isOpen = useState('hamburgerOpen');
     align-items: center;
     gap: 4vw;
     flex-wrap: wrap;
-}
-
-.app-nav ul li img {
-    width: 100%;
-    max-width: 12rem;
-    transition: transform 0.2s ease-out;
-    will-change: transform;
-}
-
-.app-nav ul li img:hover {
-    transform: scale(1.15);
 }
 
 .app-nav ul li a {
@@ -82,6 +78,10 @@ const isOpen = useState('hamburgerOpen');
     transform: scale(1.15);
 }
 
+.ctas a svg {
+    fill: var(--color-primary);
+}
+
 @media screen and (max-width: 68rem) {
     .app-nav {
         gap: 1rem;
@@ -94,7 +94,7 @@ const isOpen = useState('hamburgerOpen');
         display: block;
         position: absolute;
         left: 0;
-        bottom: -8rem;
+        bottom: -14rem;
         z-index: 1;
         width: 100%;
         transition: transform 0.2s ease-in;
@@ -105,6 +105,10 @@ const isOpen = useState('hamburgerOpen');
 
     .app-nav ul.open {
         transform: scaleY(1);
+    }
+
+    .app-nav ul li {
+        margin-bottom: 1rem;
     }
 
     .hamburger {
@@ -133,14 +137,14 @@ const isOpen = useState('hamburgerOpen');
 <template>
     <nav class="app-nav">
         <nuxt-link to="/">
-            <img src="~assets/svg/logo.svg" alt="Rijschool Gorredijk">
+            <svgo-logo :fontControlled="false" :filled="true"></svgo-logo>
         </nuxt-link>
         <ul :class="{ open: isOpen }">
             <li>
                 <nuxt-link to="/over-ons/">Over mij</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/over-ons/">Rijopleiding</nuxt-link>
+                <nuxt-link to="/rijopleiding/">Rijopleiding</nuxt-link>
             </li>
             <li>
                 <nuxt-link to="/contact/">Contact</nuxt-link>
@@ -151,15 +155,15 @@ const isOpen = useState('hamburgerOpen');
         </div>
         <div class="ctas">
             <nuxt-link to="tel:+0031633418680">
-                <img src="~assets/svg/phone.svg" alt="Bel mij">
+                <svgo-phone></svgo-phone>
                 <span>Bel mij</span>
             </nuxt-link>
             <nuxt-link to="mailto:info@rijschoolgorredijk.nl">
-                <img src="~assets/svg/envelope.svg" alt="Bel mij">
+                <svgo-envelope></svgo-envelope>
                 <span>Stuur een e-mail</span>
             </nuxt-link>
             <nuxt-link to="#">
-                <img src="~assets/svg/user.svg" alt="Bel mij">
+                <svgo-user></svgo-user>
                 <span>Portaal</span>
             </nuxt-link>
         </div>

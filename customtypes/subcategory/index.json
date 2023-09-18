@@ -1,0 +1,28 @@
+{
+  "id": "subcategory",
+  "label": "Subcategory",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "items": {
+        "type": "Group",
+        "config": {
+          "label": "Items",
+          "fields": {
+            "product": {
+              "type": "Link",
+              "config": {
+                "label": "Product",
+                "select": "document",
+                "customtypes": ["product"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

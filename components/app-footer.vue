@@ -23,18 +23,76 @@ const { data: footer } = await useAsyncData('footer', () => {
 }
 
 .app-footer .top .left {
+    display: flex;
+    flex-direction: column;
     color: #fff;
     background: var(--color-primary);
     padding: 4rem;
+    gap: 1rem;
+}
+
+.app-footer .top .left h3 {
+    margin-bottom: auto;
+}
+
+.app-footer .top .left a {
+    color: #fff;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    font-size: 1.25rem;
+    align-items: center;
+    gap: 1rem;
+    transform-origin: center left;
+    transition: transform 0.2s ease-in;
+}
+
+.app-footer .top .left a:hover {
+    transform: scale(1.25);
+}
+
+.app-footer .top .left h4 {
+    margin-top: auto;
 }
 
 .app-footer .top h3 {
     font-size: 2rem;
 }
 
+.mid-wrapper {
+    background: var(--color-secondary);
+    margin: 6rem 0;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    place-content: center;
+    gap: 4rem;
+}
+
+.mid-wrapper p {
+    font-size: 1.75rem;
+}
+
+.mid-wrapper .socials {
+    display: flex;
+    gap: 4rem;
+    font-size: 1.25em;
+    flex-wrap: wrap;
+}
+
+.mid-wrapper .socials a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 @media screen and (max-width: 60rem) {
     .app-footer .top {
         grid-template-columns: none;
+    }
+
+    .app-footer .top .left {
+        padding: 4rem 8vw;
     }
 }
 </style>
@@ -47,11 +105,11 @@ const { data: footer } = await useAsyncData('footer', () => {
                     <h3>Neem contact op</h3>
                     <p class="small">De Buorren 21 8408 HG Lippenhuizen (FR)</p>
                     <nuxt-link to="tel:+0031633418680">
-                        <img src="~assets/svg/phone.svg" alt="Mail mij">
+                        <svgo-phone></svgo-phone>
                         <span>0633418680</span>
                     </nuxt-link>
                     <nuxt-link to="mailto:info@rijschoolgorredijk.nl">
-                        <img src="~assets/svg/envelope.svg" alt="Mail mij">
+                        <svgo-envelope></svgo-envelope>
                         <span>info@rijschoolgorredijk.nl</span>
                     </nuxt-link>
                     <h4>Bereikbaarheid</h4>
@@ -66,6 +124,23 @@ const { data: footer } = await useAsyncData('footer', () => {
                     <img-ix :field="footer?.data.image"></img-ix>
                 </section>
             </div>
+        </div>
+        <div class="mid-wrapper">
+            <p>Volg Rijschool Gorredijk</p>
+            <div class="socials">
+                <nuxt-link>
+                    <svgo-facebook></svgo-facebook>
+                    <span>Facebook</span>
+                </nuxt-link>
+                <nuxt-link>
+                    <svgo-instagram></svgo-instagram>
+                    <span>Instagram</span>
+                </nuxt-link>
+            </div>
+        </div>
+        <div class="bottom-wrapper">
+            <nuxt-link>Algemene voorwaarden</nuxt-link>
+            <p>© Rijschool Gorredijk {{ new Date().getFullYear() }}</p>
         </div>
     </footer>
 </template>

@@ -1,4 +1,3 @@
-// Default import, gee idee waarom dit hier zit (Jos)
 import { repositoryName } from './slicemachine.config.json'
 
 interface Font {
@@ -77,11 +76,15 @@ export default defineNuxtConfig({
     '~/assets/css/framework.css'
   ],
 
-  modules: ['@nuxtjs/prismic'],
+  modules: [
+    '@nuxtjs/prismic',
+    'nuxt-svgo',
+  ],
 
   prismic: {
-    endpoint: 'rijschoolgorredijk-v2-1',
+    endpoint: repositoryName,
     preview: '/api/preview',
+    toolbar: false,
     clientConfig: {
       routes: [
         // {

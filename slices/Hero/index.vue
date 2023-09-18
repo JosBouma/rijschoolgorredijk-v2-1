@@ -16,10 +16,6 @@ defineProps(
 </script>
 
 <style scoped>
-.slice-hero {
-  padding-top: 12rem;
-}
-
 .slice-hero-inner {
   display: grid;
   place-items: center;
