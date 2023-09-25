@@ -69,7 +69,8 @@ type IndexDocumentDataSlicesSlice =
   | HeroSlice
   | SimpleTextBlockSlice
   | GridTwoColumnsSlice
-  | UniuqeSellingPointsSlice;
+  | UniuqeSellingPointsSlice
+  | GridThreeColumnsSlice;
 
 /**
  * Content for Index documents
@@ -132,6 +133,121 @@ export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
 export type AllDocumentTypes = FooterDocument | IndexDocument;
+
+/**
+ * Primary content in *GridThreeColumns → Primary*
+ */
+export interface GridThreeColumnsSliceDefaultPrimary {
+  /**
+   * Heading field in *GridThreeColumns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_three_columns.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Image field in *GridThreeColumns → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_three_columns.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Content field in *GridThreeColumns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_three_columns.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Default variation for GridThreeColumns Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridThreeColumnsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GridThreeColumnsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *GridThreeColumns → Primary*
+ */
+export interface GridThreeColumnsSliceTextMiddlePrimary {
+  /**
+   * Heading field in *GridThreeColumns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_three_columns.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Image field in *GridThreeColumns → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_three_columns.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Content field in *GridThreeColumns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_three_columns.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * TextMiddle variation for GridThreeColumns Slice
+ *
+ * - **API ID**: `textMiddle`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridThreeColumnsSliceTextMiddle = prismic.SharedSliceVariation<
+  "textMiddle",
+  Simplify<GridThreeColumnsSliceTextMiddlePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GridThreeColumns*
+ */
+type GridThreeColumnsSliceVariation =
+  | GridThreeColumnsSliceDefault
+  | GridThreeColumnsSliceTextMiddle;
+
+/**
+ * GridThreeColumns Shared Slice
+ *
+ * - **API ID**: `grid_three_columns`
+ * - **Description**: GridThreeColumns
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridThreeColumnsSlice = prismic.SharedSlice<
+  "grid_three_columns",
+  GridThreeColumnsSliceVariation
+>;
 
 /**
  * Primary content in *GridTwoColumns → Primary*
@@ -386,6 +502,12 @@ declare module "@prismicio/client" {
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
       AllDocumentTypes,
+      GridThreeColumnsSlice,
+      GridThreeColumnsSliceDefaultPrimary,
+      GridThreeColumnsSliceTextMiddlePrimary,
+      GridThreeColumnsSliceVariation,
+      GridThreeColumnsSliceDefault,
+      GridThreeColumnsSliceTextMiddle,
       GridTwoColumnsSlice,
       GridTwoColumnsSliceDefaultPrimary,
       GridTwoColumnsSliceTextLeftPrimary,

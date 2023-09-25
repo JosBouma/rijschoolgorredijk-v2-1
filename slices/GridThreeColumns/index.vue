@@ -1,0 +1,57 @@
+<script setup lang="ts">
+import { Content } from "@prismicio/client";
+import { Http2ServerRequest } from "http2";
+
+// The array passed to `getSliceComponentProps` is purely optional.
+// Consider it as a visual hint for you when templating your slice.
+defineProps(
+  getSliceComponentProps<Content.GridThreeColumnsSlice>([
+    "slice",
+    "index",
+    "slices",
+    "context",
+  ])
+);
+</script>
+
+<style>
+.grid-three-columns {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.grid-three-columns .grid {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 2rem;
+  margin: 0 1rem;
+}
+
+.grid-three-columns .grid > h2,
+.grid-three-columns .grid .content {
+  margin-top: 2rem;
+}
+
+.grid-three-columns .grid > h2,
+.grid-three-columns .grid > h2 * {
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 60rem) {
+  .grid-three-columns .grid {
+    grid-template-columns: none;
+  }
+}
+</style>
+
+<template>
+  <section class="grid-three-columns">
+    <div class="grid">
+      <h2><prismic-rich-text :field="slice.primary.heading"></prismic-rich-text></h2>
+      <img-ix :field="slice.primary.image"></img-ix>
+      <div class="content">
+        <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
+      </div>
+    </div>
+  </section>
+</template>

@@ -4,6 +4,9 @@ import { defineAsyncComponent } from "vue";
 import { defineSliceZoneComponents } from "@prismicio/vue";
 
 export const components = defineSliceZoneComponents({
+  grid_three_columns: defineAsyncComponent(
+    () => import("./GridThreeColumns/index.vue")
+  ),
   grid_two_columns: defineAsyncComponent(
     () => import("./GridTwoColumns/index.vue")
   ),
