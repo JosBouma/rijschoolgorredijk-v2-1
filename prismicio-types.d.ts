@@ -5,53 +5,6 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
- * Item in *Category → Items*
- */
-export interface CategoryDocumentDataItemsItem {
-  /**
-   * Item field in *Category → Items*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: category.items[].item
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  item: prismic.ContentRelationshipField<"subcategory">;
-}
-
-/**
- * Content for Category documents
- */
-interface CategoryDocumentData {
-  /**
-   * Items field in *Category*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: category.items[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  items: prismic.GroupField<Simplify<CategoryDocumentDataItemsItem>>;
-}
-
-/**
- * Category document from Prismic
- *
- * - **API ID**: `category`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type CategoryDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<CategoryDocumentData>,
-    "category",
-    Lang
-  >;
-
-/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -115,7 +68,8 @@ export type FooterDocument<Lang extends string = string> =
 type IndexDocumentDataSlicesSlice =
   | HeroSlice
   | SimpleTextBlockSlice
-  | GridTwoColumnsSlice;
+  | GridTwoColumnsSlice
+  | UniuqeSellingPointsSlice;
 
 /**
  * Content for Index documents
@@ -177,91 +131,7 @@ interface IndexDocumentData {
 export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
-/**
- * Content for Product documents
- */
-interface ProductDocumentData {
-  /**
-   * Title field in *Product*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-}
-
-/**
- * Product document from Prismic
- *
- * - **API ID**: `product`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ProductDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ProductDocumentData>,
-    "product",
-    Lang
-  >;
-
-/**
- * Item in *Subcategory → Items*
- */
-export interface SubcategoryDocumentDataItemsItem {
-  /**
-   * Product field in *Subcategory → Items*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: subcategory.items[].product
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  product: prismic.ContentRelationshipField<"product">;
-}
-
-/**
- * Content for Subcategory documents
- */
-interface SubcategoryDocumentData {
-  /**
-   * Items field in *Subcategory*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: subcategory.items[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  items: prismic.GroupField<Simplify<SubcategoryDocumentDataItemsItem>>;
-}
-
-/**
- * Subcategory document from Prismic
- *
- * - **API ID**: `subcategory`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SubcategoryDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<SubcategoryDocumentData>,
-    "subcategory",
-    Lang
-  >;
-
-export type AllDocumentTypes =
-  | CategoryDocument
-  | FooterDocument
-  | IndexDocument
-  | ProductDocument
-  | SubcategoryDocument;
+export type AllDocumentTypes = FooterDocument | IndexDocument;
 
 /**
  * Primary content in *GridTwoColumns → Primary*
@@ -455,6 +325,51 @@ export type SimpleTextBlockSlice = prismic.SharedSlice<
   SimpleTextBlockSliceVariation
 >;
 
+/**
+ * Primary content in *UniuqeSellingPoints → Items*
+ */
+export interface UniuqeSellingPointsSliceDefaultItem {
+  /**
+   * Selling point field in *UniuqeSellingPoints → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: uniuqe_selling_points.items[].selling_point
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  selling_point: prismic.RichTextField;
+}
+
+/**
+ * Default variation for UniuqeSellingPoints Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type UniuqeSellingPointsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<UniuqeSellingPointsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *UniuqeSellingPoints*
+ */
+type UniuqeSellingPointsSliceVariation = UniuqeSellingPointsSliceDefault;
+
+/**
+ * UniuqeSellingPoints Shared Slice
+ *
+ * - **API ID**: `uniuqe_selling_points`
+ * - **Description**: UniuqeSellingPoints
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type UniuqeSellingPointsSlice = prismic.SharedSlice<
+  "uniuqe_selling_points",
+  UniuqeSellingPointsSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -465,17 +380,11 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      CategoryDocument,
-      CategoryDocumentData,
       FooterDocument,
       FooterDocumentData,
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
-      ProductDocument,
-      ProductDocumentData,
-      SubcategoryDocument,
-      SubcategoryDocumentData,
       AllDocumentTypes,
       GridTwoColumnsSlice,
       GridTwoColumnsSliceDefaultPrimary,
@@ -491,6 +400,10 @@ declare module "@prismicio/client" {
       SimpleTextBlockSliceDefaultPrimary,
       SimpleTextBlockSliceVariation,
       SimpleTextBlockSliceDefault,
+      UniuqeSellingPointsSlice,
+      UniuqeSellingPointsSliceDefaultItem,
+      UniuqeSellingPointsSliceVariation,
+      UniuqeSellingPointsSliceDefault,
     };
   }
 }

@@ -16,12 +16,12 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxtjs/prismic": "^3.0.1",
-    "@slicemachine/adapter-nuxt": "^0.3.10",
+    "@nuxtjs/prismic": "^3.0.2",
+    "@slicemachine/adapter-nuxt": "^0.3.16",
     "@types/node": "^18",
     "concurrently": "^8.1.0",
     "eslint": "^8.42.0",
-    "nuxt": "^3.6.5",
+    "nuxt": "^3.7.3",
     "nuxt-svgo": "^3.5.3",
     "slice-machine-ui": "^1.8.0"
   }

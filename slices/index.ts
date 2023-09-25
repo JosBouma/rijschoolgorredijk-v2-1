@@ -11,4 +11,7 @@ export const components = defineSliceZoneComponents({
   simple_text_block: defineAsyncComponent(
     () => import("./SimpleTextBlock/index.vue")
   ),
+  uniuqe_selling_points: defineAsyncComponent(
+    () => import("./UniuqeSellingPoints/index.vue")
+  ),
 });

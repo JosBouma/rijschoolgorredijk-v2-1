@@ -87,10 +87,6 @@ export default defineNuxtConfig({
     toolbar: false,
     clientConfig: {
       routes: [
-        // {
-        //   type: 'page',
-        //   path: '/:uid',
-        // },
         {
           type: 'index',
           uid: 'index',

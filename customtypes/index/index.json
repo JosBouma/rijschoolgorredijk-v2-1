@@ -8,16 +8,28 @@
     "Main": {
       "uid": {
         "type": "UID",
-        "config": { "label": "Index", "placeholder": "" }
+        "config": {
+          "label": "Index",
+          "placeholder": ""
+        }
       },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "hero": { "type": "SharedSlice" },
-            "simple_text_block": { "type": "SharedSlice" },
-            "grid_two_columns": { "type": "SharedSlice" }
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "simple_text_block": {
+              "type": "SharedSlice"
+            },
+            "grid_two_columns": {
+              "type": "SharedSlice"
+            },
+            "uniuqe_selling_points": {
+              "type": "SharedSlice"
+            }
           }
         }
       }
@@ -32,7 +44,10 @@
       },
       "meta_image": {
         "config": {
-          "constraint": { "height": 1260, "width": 2400 },
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
           "label": "Meta Image",
           "thumbnails": []
         },

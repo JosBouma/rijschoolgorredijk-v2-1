@@ -47,9 +47,17 @@ defineProps(
 }
 
 @media screen and (max-width: 68rem) {
-  .grid-two-columns {
+  .grid-two-columns,
+  .grid-two-columns.textLeft {
     grid-template-columns: none;
     gap: 0;
+  }
+
+  .grid-two-columns.textLeft > .img {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    margin-top: -3rem;
+    position: relative;
   }
 }
 </style>
