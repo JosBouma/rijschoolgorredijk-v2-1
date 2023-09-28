@@ -55,6 +55,12 @@ const props = defineProps(
 .question-answer>.qa-items>.item>div>.answer p {
   font-size: 1rem;
 }
+
+@media screen and (max-width: 45rem) {
+  .question-answer>.qa-items {
+    grid-template-columns: none;
+  }
+}
 </style>
 
 <template>
