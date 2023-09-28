@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { components } from '~/slices'
+import { components } from '~/slices';
 
-const prismic = usePrismic()
+const prismic = usePrismic();
 const { data: page } = await useAsyncData('index', () =>
-  prismic.client.getByUID('index', 'index')
+  prismic.client.getByUID('index', 'index', {
+    fetchLinks: [
+      'questionanswer.items'
+    ]
+  })
 )
 
 useSeoMeta({
   title: page.value?.data.meta_title,
   description: page.value?.data.meta_description
-})
+});
 </script>
 
 <template>

@@ -66,6 +66,7 @@ export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
 type IndexDocumentDataSlicesSlice =
+  | QuestionAnswerSlice
   | HeroSlice
   | SimpleTextBlockSlice
   | GridTwoColumnsSlice
@@ -132,7 +133,67 @@ interface IndexDocumentData {
 export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
-export type AllDocumentTypes = FooterDocument | IndexDocument;
+/**
+ * Item in *QuestionAnswer → Items*
+ */
+export interface QuestionanswerDocumentDataItemsItem {
+  /**
+   * Question field in *QuestionAnswer → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: questionanswer.items[].question
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  question: prismic.KeyTextField;
+
+  /**
+   * Answer field in *QuestionAnswer → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: questionanswer.items[].answer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
+ * Content for QuestionAnswer documents
+ */
+interface QuestionanswerDocumentData {
+  /**
+   * Items field in *QuestionAnswer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: questionanswer.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<QuestionanswerDocumentDataItemsItem>>;
+}
+
+/**
+ * QuestionAnswer document from Prismic
+ *
+ * - **API ID**: `questionanswer`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type QuestionanswerDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<QuestionanswerDocumentData>,
+    "questionanswer",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | FooterDocument
+  | IndexDocument
+  | QuestionanswerDocument;
 
 /**
  * Primary content in *GridThreeColumns → Primary*
@@ -397,6 +458,61 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *QuestionAnswer → Items*
+ */
+export interface QuestionAnswerSliceDefaultItem {
+  /**
+   * Heading field in *QuestionAnswer → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: question_answer.items[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Items field in *QuestionAnswer → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: question_answer.items[].items
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  items: prismic.ContentRelationshipField<"questionanswer">;
+}
+
+/**
+ * Default variation for QuestionAnswer Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuestionAnswerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<QuestionAnswerSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *QuestionAnswer*
+ */
+type QuestionAnswerSliceVariation = QuestionAnswerSliceDefault;
+
+/**
+ * QuestionAnswer Shared Slice
+ *
+ * - **API ID**: `question_answer`
+ * - **Description**: QuestionAnswer
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuestionAnswerSlice = prismic.SharedSlice<
+  "question_answer",
+  QuestionAnswerSliceVariation
+>;
+
+/**
  * Primary content in *SimpleTextBlock → Primary*
  */
 export interface SimpleTextBlockSliceDefaultPrimary {
@@ -501,6 +617,8 @@ declare module "@prismicio/client" {
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
+      QuestionanswerDocument,
+      QuestionanswerDocumentData,
       AllDocumentTypes,
       GridThreeColumnsSlice,
       GridThreeColumnsSliceDefaultPrimary,
@@ -518,6 +636,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      QuestionAnswerSlice,
+      QuestionAnswerSliceDefaultItem,
+      QuestionAnswerSliceVariation,
+      QuestionAnswerSliceDefault,
       SimpleTextBlockSlice,
       SimpleTextBlockSliceDefaultPrimary,
       SimpleTextBlockSliceVariation,

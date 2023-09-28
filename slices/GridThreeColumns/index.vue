@@ -17,7 +17,7 @@ defineProps(
 <style>
 .grid-three-columns {
   max-width: 100rem;
-  margin: 0 auto;
+  margin: 0 auto 6rem auto;
 }
 
 .grid-three-columns .grid {
