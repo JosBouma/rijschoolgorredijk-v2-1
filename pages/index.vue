@@ -14,6 +14,46 @@ useSeoMeta({
   title: page.value?.data.meta_title,
   description: page.value?.data.meta_description
 });
+
+const DOMAIN = 'https://rijschoolgorredijk.nl/';
+
+useHead({
+  script: [
+    {
+
+      type: 'application/ld+json',
+      children: {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "logo": `${DOMAIN}logo.png`,
+        "image": [
+          `${DOMAIN}company-image.jpg`
+        ],
+        "@id": DOMAIN,
+        "name": 'Rijschool Gorredijk',
+        "url": DOMAIN,
+        "email": 'info@rijschoolgorredijk.nl',
+        "telephone": '+0031633418680',
+        "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 08:00-17:00",
+        "address":
+        {
+          "@type": "PostalAddress",
+          "streetAddress": 'De Buorren 21',
+          "addressLocality": 'Lippenhuizen',
+          "addressRegion": 'FR',
+          "postalCode": '',
+          "addressCountry": 'Nederland'
+        },
+        "geo":
+        {
+          "@type": "GeoCoordinates",
+          "latitude": '53.016390',
+          "longitude": '6.084580'
+        },
+      }
+    },
+  ]
+})
 </script>
 
 <template>

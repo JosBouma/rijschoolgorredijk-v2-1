@@ -1,0 +1,98 @@
+{
+  "id": "global_settings",
+  "label": "Global settings",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "company_image": {
+        "type": "Image",
+        "config": {
+          "label": "Company image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "E-mail",
+          "placeholder": ""
+        }
+      },
+      "telephone": {
+        "type": "Text",
+        "config": {
+          "label": "Telephone",
+          "placeholder": ""
+        }
+      },
+      "street_address": {
+        "type": "Text",
+        "config": {
+          "label": "Street address",
+          "placeholder": ""
+        }
+      },
+      "address_region": {
+        "type": "Text",
+        "config": {
+          "label": "Address region",
+          "placeholder": ""
+        }
+      },
+      "postal_code": {
+        "type": "Text",
+        "config": {
+          "label": "Postal code",
+          "placeholder": ""
+        }
+      },
+      "latitude": {
+        "type": "Text",
+        "config": {
+          "label": "Latitude",
+          "placeholder": ""
+        }
+      },
+      "longitude": {
+        "type": "Text",
+        "config": {
+          "label": "Longitude",
+          "placeholder": ""
+        }
+      },
+      "opening_hours": {
+        "type": "Group",
+        "config": {
+          "label": "Opening hours",
+          "fields": {
+            "range": {
+              "type": "Text",
+              "config": {
+                "label": "Range",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

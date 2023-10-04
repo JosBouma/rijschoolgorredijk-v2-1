@@ -65,6 +65,165 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
+/**
+ * Item in *Global settings → Opening hours*
+ */
+export interface GlobalSettingsDocumentDataOpeningHoursItem {
+  /**
+   * Range field in *Global settings → Opening hours*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.opening_hours[].range
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  range: prismic.KeyTextField;
+}
+
+/**
+ * Content for Global settings documents
+ */
+interface GlobalSettingsDocumentData {
+  /**
+   * Name field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Company image field in *Global settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.company_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  company_image: prismic.ImageField<never>;
+
+  /**
+   * Logo field in *Global settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * E-mail field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Telephone field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.telephone
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  telephone: prismic.KeyTextField;
+
+  /**
+   * Street address field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.street_address
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  street_address: prismic.KeyTextField;
+
+  /**
+   * Address region field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.address_region
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address_region: prismic.KeyTextField;
+
+  /**
+   * Postal code field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.postal_code
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  postal_code: prismic.KeyTextField;
+
+  /**
+   * Latitude field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.latitude
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  latitude: prismic.KeyTextField;
+
+  /**
+   * Longitude field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.longitude
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  longitude: prismic.KeyTextField;
+
+  /**
+   * Opening hours field in *Global settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.opening_hours[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  opening_hours: prismic.GroupField<
+    Simplify<GlobalSettingsDocumentDataOpeningHoursItem>
+  >;
+}
+
+/**
+ * Global settings document from Prismic
+ *
+ * - **API ID**: `global_settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GlobalSettingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GlobalSettingsDocumentData>,
+    "global_settings",
+    Lang
+  >;
+
 type IndexDocumentDataSlicesSlice =
   | QuestionAnswerSlice
   | HeroSlice
@@ -192,6 +351,7 @@ export type QuestionanswerDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | FooterDocument
+  | GlobalSettingsDocument
   | IndexDocument
   | QuestionanswerDocument;
 
@@ -614,6 +774,8 @@ declare module "@prismicio/client" {
     export type {
       FooterDocument,
       FooterDocumentData,
+      GlobalSettingsDocument,
+      GlobalSettingsDocumentData,
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
