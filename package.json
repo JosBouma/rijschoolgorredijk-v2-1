@@ -24,5 +24,8 @@
     "nuxt": "^3.7.3",
     "nuxt-svgo": "^3.5.3",
     "slice-machine-ui": "^1.14.1"
+  },
+  "dependencies": {
+    "schema-dts": "^1.1.2"
   }
 }
