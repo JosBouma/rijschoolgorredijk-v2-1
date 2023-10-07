@@ -6,6 +6,13 @@
   "status": true,
   "json": {
     "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "global_settings",
+          "placeholder": ""
+        }
+      },
       "name": {
         "type": "Text",
         "config": {
@@ -50,6 +57,20 @@
           "placeholder": ""
         }
       },
+      "postal_code": {
+        "type": "Text",
+        "config": {
+          "label": "Postal code",
+          "placeholder": ""
+        }
+      },
+      "address_locality": {
+        "type": "Text",
+        "config": {
+          "label": "Address locality",
+          "placeholder": ""
+        }
+      },
       "address_region": {
         "type": "Text",
         "config": {
@@ -57,10 +78,10 @@
           "placeholder": ""
         }
       },
-      "postal_code": {
+      "address_country": {
         "type": "Text",
         "config": {
-          "label": "Postal code",
+          "label": "Address country",
           "placeholder": ""
         }
       },
@@ -91,6 +112,13 @@
               }
             }
           }
+        }
+      },
+      "domain": {
+        "type": "Text",
+        "config": {
+          "label": "Domain",
+          "placeholder": ""
         }
       }
     }

@@ -15,23 +15,20 @@ defineProps(
 
 <style>
 .unique-selling-points {
+  background: var(--color-tertiary);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem 2rem;
+  gap: 1rem 4rem;
   font-size: 1.25rem;
-  max-width: 100rem;
-  margin: 6rem auto;
   list-style: none;
-  padding: 0;
+  padding: 2rem 0;
 }
 
 .unique-selling-points li {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1%;
-  background: var(--color-secondary);
+  column-gap: 1rem;
   text-align: center;
 }
 
@@ -39,13 +36,18 @@ defineProps(
   color: var(--color-primary);
   border: 0.5rem solid #fff;
 }
+
+.unique-selling-points li div {
+  border-bottom: 1px solid #c3c3c3;
+  text-shadow: 3px 2px 5px #d1ceff;
+}
 </style>
 
 <template>
   <ul class="unique-selling-points">
     <li v-for="usp in slice.items">
       <svgo-checkmark></svgo-checkmark>
-      <div><prismic-rich-text :field="usp.selling_point"></prismic-rich-text></div>
+      <prismic-rich-text :field="usp.selling_point"></prismic-rich-text>
     </li>
   </ul>
 </template>

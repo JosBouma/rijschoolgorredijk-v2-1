@@ -151,6 +151,28 @@ interface GlobalSettingsDocumentData {
   street_address: prismic.KeyTextField;
 
   /**
+   * Postal code field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.postal_code
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  postal_code: prismic.KeyTextField;
+
+  /**
+   * Address locality field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.address_locality
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address_locality: prismic.KeyTextField;
+
+  /**
    * Address region field in *Global settings*
    *
    * - **Field Type**: Text
@@ -162,15 +184,15 @@ interface GlobalSettingsDocumentData {
   address_region: prismic.KeyTextField;
 
   /**
-   * Postal code field in *Global settings*
+   * Address country field in *Global settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: global_settings.postal_code
+   * - **API ID Path**: global_settings.address_country
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  postal_code: prismic.KeyTextField;
+  address_country: prismic.KeyTextField;
 
   /**
    * Latitude field in *Global settings*
@@ -206,6 +228,17 @@ interface GlobalSettingsDocumentData {
   opening_hours: prismic.GroupField<
     Simplify<GlobalSettingsDocumentDataOpeningHoursItem>
   >;
+
+  /**
+   * Domain field in *Global settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global_settings.domain
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  domain: prismic.KeyTextField;
 }
 
 /**
@@ -218,7 +251,7 @@ interface GlobalSettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type GlobalSettingsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
+  prismic.PrismicDocumentWithUID<
     Simplify<GlobalSettingsDocumentData>,
     "global_settings",
     Lang

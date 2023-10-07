@@ -1,6 +1,7 @@
 :root {
     --color-primary: #0077b6;
     --color-secondary: #caf0f8;
+    --color-tertiary: rgba(245, 240, 255, 0.537);
     --app-max-width: 140rem;
 }
 
