@@ -24,11 +24,15 @@ import { WithContext, LocalBusiness } from 'schema-dts';
 const children: WithContext<LocalBusiness> = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': json.value?.data.domain as string,
+  name: json.value?.data.name as string,
   logo: [
     json.value?.data.logo.url as string
   ],
+  image: [
+    json.value?.data.company_image.url as string
+  ],
   url: json.value?.data.domain as string,
-  '@id': json.value?.data.domain as string,
   email: json.value?.data.email as string,
   telephone: json.value?.data.telephone as string,
   address: {
