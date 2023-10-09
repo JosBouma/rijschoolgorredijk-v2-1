@@ -23,13 +23,13 @@ defineProps(
   font-size: 1.25rem;
   list-style: none;
   padding: 2rem 0;
+  text-align: center;
 }
 
 .unique-selling-points li {
   display: flex;
   align-items: center;
   column-gap: 1rem;
-  text-align: center;
 }
 
 .unique-selling-points li svg {
@@ -40,6 +40,13 @@ defineProps(
 .unique-selling-points li div {
   border-bottom: 1px solid #c3c3c3;
   text-shadow: 3px 2px 5px #d1ceff;
+}
+
+@media screen and (max-width: 60rem) {
+  .unique-selling-points {
+    justify-content: start;
+    text-align: left;
+  }
 }
 </style>
 

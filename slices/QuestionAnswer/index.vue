@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Content } from "@prismicio/client";
+import { WithContext, FAQPage, Question } from 'schema-dts';
+
 const prismic = usePrismic();
 
 // The array passed to `getSliceComponentProps` is purely optional.
@@ -12,6 +14,36 @@ const props = defineProps(
     "context",
   ])
 );
+
+const children: WithContext<FAQPage> = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+};
+
+const items: Question[] = [];
+
+props.slice.items.forEach((val) => {
+  const doc = val.items as unknown as Content.QuestionanswerDocument;
+  doc.data.items.forEach(item => items.push({
+    '@type': 'Question',
+    name: item.question as string,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: prismic.asHTML(item.answer)
+    }
+  }));
+});
+
+children.mainEntity = items;
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      children
+    }
+  ]
+})
 </script>
 
 <style>
@@ -68,9 +100,9 @@ const props = defineProps(
     <div class="qa-items">
       <div v-for="item in slice.items" class="item">
         <h2>{{ prismic.asText(item.heading) }}</h2>
-        <div v-for="qa in item.items.data.items" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <div v-for="qa in item.items.data.items">
           <p itemprop="name">{{ qa.question }}</p>
-          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="answer">
+          <div itemscope itemprop="acceptedAnswer">
             <prismic-rich-text :field="qa.answer" itemprop="text"></prismic-rich-text>
           </div>
         </div>
