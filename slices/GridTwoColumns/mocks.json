@@ -36,6 +36,11 @@
 						}
 					}
 				]
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "#63f635",
+				"type": "Color"
 			}
 		},
 		"items": []
@@ -77,6 +82,11 @@
 						}
 					}
 				]
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "#9736bc",
+				"type": "Color"
 			}
 		},
 		"items": [

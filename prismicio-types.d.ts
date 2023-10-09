@@ -526,6 +526,16 @@ export interface GridTwoColumnsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
+
+  /**
+   * Background field in *GridTwoColumns → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_two_columns.primary.background
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background: prismic.ColorField;
 }
 
 /**
@@ -564,6 +574,16 @@ export interface GridTwoColumnsSliceTextLeftPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
+
+  /**
+   * Background field in *GridTwoColumns → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_two_columns.primary.background
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background: prismic.ColorField;
 }
 
 /**

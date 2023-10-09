@@ -3,7 +3,7 @@ import { Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
-defineProps(
+const props = defineProps(
   getSliceComponentProps<Content.GridTwoColumnsSlice>([
     "slice",
     "index",
@@ -11,6 +11,10 @@ defineProps(
     "context",
   ])
 );
+
+const styleVars = {
+  '--background-color': props.slice.primary.background as string
+}
 </script>
 
 <style>
@@ -38,7 +42,7 @@ defineProps(
 }
 
 .grid-two-columns .content {
-  background: rgb(246, 246, 246);
+  background: var(--background-color, rgb(246, 246, 246));
   padding: 8%;
 }
 
@@ -63,7 +67,7 @@ defineProps(
 </style>
 
 <template>
-  <section class="grid-two-columns" :class="slice.variation">
+  <section class="grid-two-columns" :class="slice.variation" :style="styleVars">
     <div class="img">
       <img-ix :field="slice.primary.image"></img-ix>
     </div>
