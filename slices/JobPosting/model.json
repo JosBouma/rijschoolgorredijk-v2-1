@@ -1,0 +1,42 @@
+{
+  "id": "job_posting",
+  "type": "SharedSlice",
+  "name": "JobPosting",
+  "description": "JobPosting",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,hyperlink,image,list-item,o-list-item,rtl,heading2,strong,em"
+          }
+        },
+        "date_posted": {
+          "type": "Date",
+          "config": {
+            "label": "Date posted",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

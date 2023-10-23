@@ -11,6 +11,7 @@ export const components = defineSliceZoneComponents({
     () => import("./GridTwoColumns/index.vue")
   ),
   hero: defineAsyncComponent(() => import("./Hero/index.vue")),
+  job_posting: defineAsyncComponent(() => import("./JobPosting/index.vue")),
   question_answer: defineAsyncComponent(
     () => import("./QuestionAnswer/index.vue")
   ),

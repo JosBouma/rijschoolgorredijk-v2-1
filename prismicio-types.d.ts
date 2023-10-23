@@ -325,6 +325,75 @@ interface IndexDocumentData {
 export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
+type PageDocumentDataSlicesSlice =
+  | GridThreeColumnsSlice
+  | GridTwoColumnsSlice
+  | HeroSlice
+  | SimpleTextBlockSlice
+  | QuestionAnswerSlice
+  | JobPostingSlice
+  | UniuqeSellingPointsSlice;
+
+/**
+ * Content for Page documents
+ */
+interface PageDocumentData {
+  /**
+   * Slice Zone field in *Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Page document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
 /**
  * Item in *QuestionAnswer → Items*
  */
@@ -386,6 +455,7 @@ export type AllDocumentTypes =
   | FooterDocument
   | GlobalSettingsDocument
   | IndexDocument
+  | PageDocument
   | QuestionanswerDocument;
 
 /**
@@ -633,14 +703,44 @@ export interface HeroSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * Heading field in *Hero → Primary*
+   * Heading 1 field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.heading
+   * - **API ID Path**: hero.primary.heading_1
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  heading: prismic.KeyTextField;
+  heading_1: prismic.KeyTextField;
+
+  /**
+   * Heading 2 field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.heading_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_2: prismic.KeyTextField;
+
+  /**
+   * CTA text field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.cta_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cta_text: prismic.KeyTextField;
+
+  /**
+   * CTA Link field in *Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.cta_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta_link: prismic.LinkField;
 }
 
 /**
@@ -669,6 +769,71 @@ type HeroSliceVariation = HeroSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
+/**
+ * Primary content in *JobPosting → Primary*
+ */
+export interface JobPostingSliceDefaultPrimary {
+  /**
+   * Title field in *JobPosting → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_posting.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *JobPosting → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_posting.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Date posted field in *JobPosting → Primary*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: job_posting.primary.date_posted
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date_posted: prismic.DateField;
+}
+
+/**
+ * Default variation for JobPosting Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobPostingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<JobPostingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *JobPosting*
+ */
+type JobPostingSliceVariation = JobPostingSliceDefault;
+
+/**
+ * JobPosting Shared Slice
+ *
+ * - **API ID**: `job_posting`
+ * - **Description**: JobPosting
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type JobPostingSlice = prismic.SharedSlice<
+  "job_posting",
+  JobPostingSliceVariation
+>;
 
 /**
  * Primary content in *QuestionAnswer → Items*
@@ -832,6 +997,9 @@ declare module "@prismicio/client" {
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
+      PageDocument,
+      PageDocumentData,
+      PageDocumentDataSlicesSlice,
       QuestionanswerDocument,
       QuestionanswerDocumentData,
       AllDocumentTypes,
@@ -851,6 +1019,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      JobPostingSlice,
+      JobPostingSliceDefaultPrimary,
+      JobPostingSliceVariation,
+      JobPostingSliceDefault,
       QuestionAnswerSlice,
       QuestionAnswerSliceDefaultItem,
       QuestionAnswerSliceVariation,

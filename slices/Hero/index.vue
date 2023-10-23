@@ -53,9 +53,9 @@ defineProps(
         <img-ix :field="slice.primary.image" loading="eager" priority="high"></img-ix>  
       </div>
       <div class="slice-hero-content">
-        <h1>Rijschool Gorredijk</h1>
-        <h2>{{ slice.primary.heading }}</h2>
-        <nuxt-link to="/contact/" class="button">Neem direct contact op</nuxt-link>
+        <h1>{{ slice.primary.heading_1 }}</h1>
+        <h2>{{ slice.primary.heading_2 }}</h2>
+        <nuxt-link :to="$prismic.asLink(slice.primary.cta_link)" class="button">{{ slice.primary.cta_text }}</nuxt-link>
       </div>
     </div>
   </section>

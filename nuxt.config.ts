@@ -92,6 +92,10 @@ export default defineNuxtConfig({
           uid: 'index',
           path: '/',
         },
+        {
+          type: 'page',
+          path: '/:uid/'
+        }
       ]
     }
   },

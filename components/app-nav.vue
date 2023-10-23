@@ -35,7 +35,7 @@ const isOpen = useState('hamburgerOpen');
     margin: 0;
     padding: 0.4rem 1rem;
     align-items: center;
-    gap: 4vw;
+    gap: 3rem;
     flex-wrap: wrap;
 }
 
@@ -82,7 +82,7 @@ const isOpen = useState('hamburgerOpen');
     fill: var(--color-primary);
 }
 
-@media screen and (max-width: 68rem) {
+@media screen and (max-width: 100rem) {
     .app-nav {
         gap: 1rem;
         grid-template-columns: 1fr auto;
@@ -140,14 +140,27 @@ const isOpen = useState('hamburgerOpen');
             <svgo-logo :fontControlled="false" :filled="true"></svgo-logo>
         </nuxt-link>
         <ul :class="{ open: isOpen }">
+
             <li>
-                <nuxt-link to="/over-ons/">Over mij</nuxt-link>
+                <nuxt-link to="/pagina-1/">Pagina 1</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/rijopleiding/">Rijopleiding</nuxt-link>
+                <nuxt-link to="/pagina-2/">Pagina 2</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/contact/">Contact</nuxt-link>
+                <nuxt-link to="/pagina-3/">Pagina 3</nuxt-link>
+            </li>
+            <li>
+                <nuxt-link to="/pagina-4/">Pagina 4</nuxt-link>
+            </li>
+            <li>
+                <nuxt-link to="/pagina-5/">Pagina 5</nuxt-link>
+            </li>
+            <li>
+                <nuxt-link to="/pagina-6/">Pagina 6</nuxt-link>
+            </li>
+            <li>
+                <nuxt-link to="/pagina-7/">Pagina 7</nuxt-link>
             </li>
         </ul>
         <div class="hamburger">

@@ -14,11 +14,40 @@
       "primary": {
         "image": {
           "type": "Image",
-          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
         },
-        "heading": {
+        "heading_1": {
           "type": "Text",
-          "config": { "label": "Heading", "placeholder": "" }
+          "config": {
+            "label": "Heading 1",
+            "placeholder": ""
+          }
+        },
+        "heading_2": {
+          "type": "Text",
+          "config": {
+            "label": "Heading 2",
+            "placeholder": ""
+          }
+        },
+        "cta_text": {
+          "type": "Text",
+          "config": {
+            "label": "CTA text",
+            "placeholder": ""
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {}
