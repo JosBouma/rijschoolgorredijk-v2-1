@@ -42,7 +42,8 @@ const children: WithContext<JobPosting> = {
       'postalCode': settings.value?.data.postal_code as string,
       'addressCountry': settings.value?.data.address_country as string
     }
-  }
+  },
+  "employmentType": props.slice.primary.employment_type
 }
 
 useHead({

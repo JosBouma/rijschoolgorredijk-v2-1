@@ -34,6 +34,24 @@
             "label": "Date posted",
             "placeholder": ""
           }
+        },
+        "employment_type": {
+          "type": "Select",
+          "config": {
+            "label": "Employment type",
+            "placeholder": "",
+            "options": [
+              "FULL_TIME",
+              "PART_TIME",
+              "CONTRACTOR",
+              "TEMPORARY",
+              "INTERN",
+              "VOLUNTEER",
+              "PER_DIEM",
+              "OTHER"
+            ],
+            "default_value": "FULL_TIME"
+          }
         }
       },
       "items": {}

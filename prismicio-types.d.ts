@@ -803,6 +803,27 @@ export interface JobPostingSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#date
    */
   date_posted: prismic.DateField;
+
+  /**
+   * Employment type field in *JobPosting → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: FULL_TIME
+   * - **API ID Path**: job_posting.primary.employment_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  employment_type: prismic.SelectField<
+    | "FULL_TIME"
+    | "PART_TIME"
+    | "CONTRACTOR"
+    | "TEMPORARY"
+    | "INTERN"
+    | "VOLUNTEER"
+    | "PER_DIEM"
+    | "OTHER",
+    "filled"
+  >;
 }
 
 /**

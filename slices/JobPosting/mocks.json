@@ -23,6 +23,11 @@
 				"__TYPE__": "FieldContent",
 				"type": "Date",
 				"value": "2019-10-15"
+			},
+			"employment_type": {
+				"__TYPE__": "FieldContent",
+				"value": "VOLUNTEER",
+				"type": "Select"
 			}
 		},
 		"items": []
