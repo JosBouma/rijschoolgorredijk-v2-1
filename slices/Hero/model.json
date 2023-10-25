@@ -12,14 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "heading_1": {
           "type": "Text",
           "config": {
@@ -50,7 +42,16 @@
           }
         }
       },
-      "items": {}
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
     }
   ]
 }

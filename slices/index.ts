@@ -4,6 +4,7 @@ import { defineAsyncComponent } from "vue";
 import { defineSliceZoneComponents } from "@prismicio/vue";
 
 export const components = defineSliceZoneComponents({
+  google_rating: defineAsyncComponent(() => import("./GoogleRating/index.vue")),
   grid_three_columns: defineAsyncComponent(
     () => import("./GridThreeColumns/index.vue")
   ),
@@ -11,6 +12,9 @@ export const components = defineSliceZoneComponents({
     () => import("./GridTwoColumns/index.vue")
   ),
   hero: defineAsyncComponent(() => import("./Hero/index.vue")),
+  instructor_listing: defineAsyncComponent(
+    () => import("./InstructorListing/index.vue")
+  ),
   job_posting: defineAsyncComponent(() => import("./JobPosting/index.vue")),
   question_answer: defineAsyncComponent(
     () => import("./QuestionAnswer/index.vue")

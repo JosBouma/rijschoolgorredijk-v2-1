@@ -13,21 +13,64 @@ defineProps(
     "context",
   ])
 );
+
+let timer: number = 0;
+let current = ref(0);
+
+onMounted(() => {
+  const items = document.querySelectorAll('.slice-hero-slider>div');
+  if(!items.length) return;
+  items[0].classList.add('active');
+  if(items.length === 1) return;
+  timer = window.setInterval(() => {
+    items[current.value].classList.remove('active');
+    current.value = current.value === (items.length - 1) ? 0 : current.value + 1;
+    items[current.value].classList.add('active');
+    console.log(current.value);
+  }, 8000);
+});
+
+onBeforeUnmount(() => {
+  window.clearInterval(timer);
+});
 </script>
 
 <style scoped>
+.slice-hero {
+  margin-bottom: 6rem;
+}
+
 .slice-hero-inner {
   display: grid;
   place-items: center;
 }
 
-.slice-hero-img,
+.slice-hero-slider,
 .slice-hero-content {
   grid-row: 1;
   grid-column: 1;
 }
 
+.slice-hero-slider {
+  display: grid;
+}
+
+.slice-hero-slider>div {
+  display: grid;
+  grid-row: 1;
+  grid-column: 1;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  will-change: opacity;
+}
+
+.slice-hero-slider>div.active {
+  opacity: 1;
+}
+
 .slice-hero-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -49,8 +92,10 @@ defineProps(
 <template>
   <section class="slice-hero" :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
     <div class="slice-hero-inner">
-      <div class="slice-hero-img">
-        <img-ix :field="slice.primary.image" loading="eager" priority="high"></img-ix>  
+      <div class="slice-hero-slider">
+        <div v-for="item in slice.items">
+          <img-ix :field="item.image" loading="eager" priority="high"></img-ix>
+        </div>
       </div>
       <div class="slice-hero-content">
         <h1>{{ slice.primary.heading_1 }}</h1>

@@ -258,6 +258,9 @@ export type GlobalSettingsDocument<Lang extends string = string> =
   >;
 
 type IndexDocumentDataSlicesSlice =
+  | GoogleRatingSlice
+  | InstructorListingSlice
+  | JobPostingSlice
   | QuestionAnswerSlice
   | HeroSlice
   | SimpleTextBlockSlice
@@ -326,6 +329,8 @@ export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | GoogleRatingSlice
+  | InstructorListingSlice
   | GridThreeColumnsSlice
   | GridTwoColumnsSlice
   | HeroSlice
@@ -457,6 +462,61 @@ export type AllDocumentTypes =
   | IndexDocument
   | PageDocument
   | QuestionanswerDocument;
+
+/**
+ * Primary content in *GoogleRating → Primary*
+ */
+export interface GoogleRatingSliceDefaultPrimary {
+  /**
+   * Heading field in *GoogleRating → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: google_rating.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Subtext field in *GoogleRating → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: google_rating.primary.subtext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtext: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for GoogleRating Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GoogleRatingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GoogleRatingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GoogleRating*
+ */
+type GoogleRatingSliceVariation = GoogleRatingSliceDefault;
+
+/**
+ * GoogleRating Shared Slice
+ *
+ * - **API ID**: `google_rating`
+ * - **Description**: GoogleRating
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GoogleRatingSlice = prismic.SharedSlice<
+  "google_rating",
+  GoogleRatingSliceVariation
+>;
 
 /**
  * Primary content in *GridThreeColumns → Primary*
@@ -693,16 +753,6 @@ export type GridTwoColumnsSlice = prismic.SharedSlice<
  */
 export interface HeroSliceDefaultPrimary {
   /**
-   * Image field in *Hero → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
    * Heading 1 field in *Hero → Primary*
    *
    * - **Field Type**: Text
@@ -744,6 +794,21 @@ export interface HeroSliceDefaultPrimary {
 }
 
 /**
+ * Primary content in *Hero → Items*
+ */
+export interface HeroSliceDefaultItem {
+  /**
+   * Image field in *Hero → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
  * Default variation for Hero Slice
  *
  * - **API ID**: `default`
@@ -753,7 +818,7 @@ export interface HeroSliceDefaultPrimary {
 export type HeroSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<HeroSliceDefaultPrimary>,
-  never
+  Simplify<HeroSliceDefaultItem>
 >;
 
 /**
@@ -769,6 +834,71 @@ type HeroSliceVariation = HeroSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
+/**
+ * Primary content in *InstructorListing → Items*
+ */
+export interface InstructorListingSliceDefaultItem {
+  /**
+   * Name field in *InstructorListing → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructor_listing.items[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Description field in *InstructorListing → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructor_listing.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Image field in *InstructorListing → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructor_listing.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for InstructorListing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InstructorListingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<InstructorListingSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *InstructorListing*
+ */
+type InstructorListingSliceVariation = InstructorListingSliceDefault;
+
+/**
+ * InstructorListing Shared Slice
+ *
+ * - **API ID**: `instructor_listing`
+ * - **Description**: InstructorListing
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InstructorListingSlice = prismic.SharedSlice<
+  "instructor_listing",
+  InstructorListingSliceVariation
+>;
 
 /**
  * Primary content in *JobPosting → Primary*
@@ -1024,6 +1154,10 @@ declare module "@prismicio/client" {
       QuestionanswerDocument,
       QuestionanswerDocumentData,
       AllDocumentTypes,
+      GoogleRatingSlice,
+      GoogleRatingSliceDefaultPrimary,
+      GoogleRatingSliceVariation,
+      GoogleRatingSliceDefault,
       GridThreeColumnsSlice,
       GridThreeColumnsSliceDefaultPrimary,
       GridThreeColumnsSliceTextMiddlePrimary,
@@ -1038,8 +1172,13 @@ declare module "@prismicio/client" {
       GridTwoColumnsSliceTextLeft,
       HeroSlice,
       HeroSliceDefaultPrimary,
+      HeroSliceDefaultItem,
       HeroSliceVariation,
       HeroSliceDefault,
+      InstructorListingSlice,
+      InstructorListingSliceDefaultItem,
+      InstructorListingSliceVariation,
+      InstructorListingSliceDefault,
       JobPostingSlice,
       JobPostingSliceDefaultPrimary,
       JobPostingSliceVariation,

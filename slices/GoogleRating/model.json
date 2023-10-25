@@ -1,0 +1,33 @@
+{
+  "id": "google_rating",
+  "type": "SharedSlice",
+  "name": "GoogleRating",
+  "description": "GoogleRating",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "subtext": {
+          "type": "Text",
+          "config": {
+            "label": "Subtext",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "meat",
+				"type": "Text"
+			},
+			"subtext": {
+				"__TYPE__": "FieldContent",
+				"value": "trap",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

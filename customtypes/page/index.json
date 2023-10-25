@@ -17,6 +17,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "google_rating": {
+              "type": "SharedSlice"
+            },
+            "instructor_listing": {
+              "type": "SharedSlice"
+            },
             "grid_three_columns": {
               "type": "SharedSlice"
             },
