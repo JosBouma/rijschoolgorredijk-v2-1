@@ -5,7 +5,11 @@ import { Content } from "@prismicio/client";
 const prismic = usePrismic();
 const route = useRoute();
 const response = await useAsyncData(route.params.uid as string, () => 
-    prismic.client.getAllByType('page')
+    prismic.client.getAllByType('page', {
+    fetchLinks: [
+      'questionanswer.items'
+    ]
+  })
 );
 
 const pages = response.data as Ref<Content.PageDocument<string>[]>
