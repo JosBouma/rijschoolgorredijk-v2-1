@@ -83,8 +83,6 @@ export default defineNuxtConfig({
 
   prismic: {
     endpoint: repositoryName,
-    // preview: '/api/preview',
-    // toolbar: false,
     clientConfig: {
       routes: [
         {
@@ -94,7 +92,7 @@ export default defineNuxtConfig({
         },
         {
           type: 'page',
-          path: '/:uid/'
+          path: '/:uid'
         }
       ]
     }
