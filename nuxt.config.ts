@@ -84,7 +84,7 @@ export default defineNuxtConfig({
   prismic: {
     endpoint: repositoryName,
     preview: '/api/preview',
-    toolbar: false,
+    // toolbar: false,
     clientConfig: {
       routes: [
         {
