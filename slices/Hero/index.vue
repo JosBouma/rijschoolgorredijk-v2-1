@@ -94,7 +94,7 @@ onBeforeUnmount(() => {
     <div class="slice-hero-inner">
       <div class="slice-hero-slider">
         <div v-for="item in slice.items">
-          <img-ix :field="item.image" loading="eager" priority="high"></img-ix>
+          <img-ix v-if="item.image.url" :field="item.image" loading="eager" priority="high"></img-ix>
         </div>
       </div>
       <div class="slice-hero-content">
