@@ -65,7 +65,7 @@ useHead({
 
 .job-posting .content .top {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 2rem;
   margin-bottom: 2rem;
   color: var(--color-primary);

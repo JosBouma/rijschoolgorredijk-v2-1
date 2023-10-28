@@ -29,6 +29,11 @@ if(!page) {
         fatal: true
     })
 }
+
+useSeoMeta({
+  title: page.data.meta_title,
+  description: page.data.meta_description
+});
 </script>
 
 <template>
