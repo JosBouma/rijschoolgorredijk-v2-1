@@ -26,7 +26,7 @@ onMounted(() => {
     items[current.value].classList.remove('active');
     current.value = current.value === (items.length - 1) ? 0 : current.value + 1;
     items[current.value].classList.add('active');
-    console.log(current.value);
+    // console.log(current.value);
   }, 8000);
 });
 
@@ -37,6 +37,8 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .slice-hero {
+  position: relative;
+  z-index: -1;
   margin-bottom: 6rem;
 }
 

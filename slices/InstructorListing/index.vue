@@ -50,6 +50,14 @@ defineProps(
   margin: 0 auto 2rem auto;
   box-shadow: 14px 3px 0 #e3e3e3;
 }
+
+@media screen and (max-width: 30rem) {
+  .instructor-listing .items {
+    padding: 0 1rem;
+    display: grid;
+    gap: 4rem;
+  }
+}
 </style>
 
 <template>

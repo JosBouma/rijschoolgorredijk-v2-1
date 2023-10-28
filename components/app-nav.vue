@@ -1,5 +1,13 @@
 <script lang="ts" setup>
 const isOpen = useState('hamburgerOpen');
+const route = useRoute();
+
+function handleUlClick(evt: MouseEvent) {
+    const target = evt.target as HTMLElement;
+    if('A' === target.tagName) {
+        isOpen.value = false;
+    }
+}
 </script>
 
 <style scoped>
@@ -90,17 +98,18 @@ const isOpen = useState('hamburgerOpen');
 
     .app-nav ul {
         transform: scaleY(0);
-        background: #fff;
-        display: block;
+        background: rgba(255, 255, 255, 0.9);
+        display: grid;
+        gap: 0;
         position: absolute;
         left: 0;
-        bottom: -14rem;
+        top: 150%;
         z-index: 1;
         width: 100%;
         transition: transform 0.2s ease-in;
         transform-origin: top;
         will-change: transform;
-        padding: 2rem;
+        padding: 2rem 0;
     }
 
     .app-nav ul.open {
@@ -108,7 +117,7 @@ const isOpen = useState('hamburgerOpen');
     }
 
     .app-nav ul li {
-        margin-bottom: 1rem;
+        margin: 0 0 1rem 4rem;
     }
 
     .hamburger {
@@ -128,8 +137,8 @@ const isOpen = useState('hamburgerOpen');
         flex-wrap: wrap;
     }
 
-    .ctas img {
-        max-width: 10px;
+    .ctas svg {
+        display: none;
     }
 }
 </style>
@@ -139,8 +148,7 @@ const isOpen = useState('hamburgerOpen');
         <nuxt-link to="/">
             <svgo-logo :fontControlled="false" :filled="true"></svgo-logo>
         </nuxt-link>
-        <ul :class="{ open: isOpen }">
-
+        <ul :class="{ open: isOpen }" @click="handleUlClick">
             <li>
                 <nuxt-link to="/pagina-1/">Pagina 1</nuxt-link>
             </li>

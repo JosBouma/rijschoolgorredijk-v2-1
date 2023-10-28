@@ -31,7 +31,7 @@ const children: WithContext<JobPosting> = {
     "name": settings.value?.data.name as string,
     "sameAs": settings.value?.data.domain as string,
   },
-  'datePosted': `${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`,
+  'datePosted': `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate()}`,
   "jobLocation": {
     "@type": "Place",
     'address': {
@@ -56,10 +56,39 @@ useHead({
 });
 </script>
 
+<style>
+.job-posting .content {
+  max-width: 80rem;
+  padding: 0 1rem;
+  margin: 0 auto 6rem auto;
+}
+
+.job-posting .content .top {
+  display: flex;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+.job-posting .content .top p {
+  font-size: 0.8rem;
+}
+
+.job-posting .content .rte {
+  display: grid;
+  gap: 1rem;
+}
+</style>
+
 <template>
-  <section>
-    <p>Geplaatst: {{ dt.toLocaleDateString('nl-NL') }}</p>
-    <h1>{{ slice.primary.title }}</h1>
-    <prismic-rich-text :field="slice.primary.description"></prismic-rich-text>
+  <section class="job-posting">
+    <div class="content">
+      <div class="top">
+        <h1>{{ slice.primary.title }}</h1>
+        <p>Geplaatst: {{ dt.toLocaleDateString('nl-NL') }}</p>
+      </div>
+      <prismic-rich-text class="rte" :field="slice.primary.description"></prismic-rich-text>
+    </div>
   </section>
 </template>
