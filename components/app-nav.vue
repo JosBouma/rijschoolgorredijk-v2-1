@@ -145,7 +145,7 @@ function handleUlClick(evt: MouseEvent) {
 
 <template>
     <nav class="app-nav">
-        <nuxt-link to="/">
+        <nuxt-link to="/" @click="isOpen = false">
             <svgo-logo :fontControlled="false" :filled="true"></svgo-logo>
         </nuxt-link>
         <ul :class="{ open: isOpen }" @click="handleUlClick">
