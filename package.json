@@ -19,6 +19,7 @@
     "@nuxtjs/prismic": "^3.0.2",
     "@slicemachine/adapter-nuxt": "^0.3.17",
     "@types/node": "^18",
+    "@types/pug": "^2.0.8",
     "concurrently": "^8.1.0",
     "eslint": "^8.42.0",
     "nuxt": "^3.7.3",
@@ -26,6 +27,7 @@
     "slice-machine-ui": "^1.14.1"
   },
   "dependencies": {
+    "pug": "^3.0.2",
     "schema-dts": "^1.1.2"
   }
 }
