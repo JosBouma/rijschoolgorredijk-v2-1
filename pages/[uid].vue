@@ -32,9 +32,9 @@ useSeoMeta({
 <template>
     <app-layout>
       <SliceZone wrapper="main" :slices="page?.data.slices ?? []" :components="components" />
-      <dev-only>
+      <!-- <dev-only>
         <p>Route name: {{ params.uid }}</p>
         <pre class="debug">{{ response }}</pre>
-      </dev-only>
+      </dev-only> -->
     </app-layout>
   </template>

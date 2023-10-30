@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const prismic = usePrismic();
 const { data: footer } = await useAsyncData('footer', () => {
-    return prismic.client.getByUID('footer', 'footer')
-})
+    return prismic.client.getByUID('footer', 'footer');
+});
 </script>
 
 <style scoped>
@@ -115,6 +115,15 @@ const { data: footer } = await useAsyncData('footer', () => {
 
     .app-footer .top .left {
         padding: 4rem 8vw;
+        overflow: hidden;
+    }
+
+    .app-footer .top .left a {
+        font-size: 1rem;
+    }
+
+    .bottom-wrapper a {
+        font-size: 1rem;
     }
 }
 </style>

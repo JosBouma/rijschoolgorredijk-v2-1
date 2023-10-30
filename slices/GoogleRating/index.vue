@@ -47,13 +47,18 @@ const ratings = computed(() => {
 <style>
 .google-rating {
   width: fit-content;
+  padding: 0 1rem;
   margin: 0 auto 6rem auto;
   display: grid;
   gap: 1rem;
 }
 
 .google-rating .stars {
+  position: relative;
+  z-index: -1;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .google-rating .stars>span {

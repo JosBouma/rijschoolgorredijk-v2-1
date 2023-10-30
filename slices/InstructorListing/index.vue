@@ -33,8 +33,9 @@ defineProps(
 
 .instructor-listing .items {
   display: flex;
-  column-gap: 4rem;
+  gap: 4rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
 .instructor-listing .item {
@@ -42,13 +43,20 @@ defineProps(
   text-align: center;
   background: #fff;
   padding: 1rem;
+  max-width: 22rem;
+  padding-bottom: 2rem;
+  border-radius: 1rem;
+  filter: drop-shadow(10px, 10px, 10px, #000);
 }
 
 .instructor-listing .item img {
-  border-radius: 50%;
-  border: 1px solid #000;
-  margin: 0 auto 2rem auto;
-  box-shadow: 14px 3px 0 #e3e3e3;
+  border-radius: 20%;
+  margin: 2rem auto;
+  box-shadow: 14px 13px 24px #d1eefd;
+}
+
+.instructor-listing .item h3 {
+  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 30rem) {
