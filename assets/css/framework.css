@@ -64,3 +64,7 @@ img {
     background: var(--color-secondary);
     color: #000;
 }
+
+pre.debug {
+    overflow: scroll;
+}

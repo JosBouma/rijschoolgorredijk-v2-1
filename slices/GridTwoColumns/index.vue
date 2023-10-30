@@ -69,7 +69,7 @@ const styleVars = {
 <template>
   <section class="grid-two-columns" :class="slice.variation" :style="styleVars">
     <div class="img">
-      <img-ix :field="slice.primary.image"></img-ix>
+      <img-ix v-if="slice.primary.image.url" :field="slice.primary.image"></img-ix>
     </div>
     <div class="content">
       <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>

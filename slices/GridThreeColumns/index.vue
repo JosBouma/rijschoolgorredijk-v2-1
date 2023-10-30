@@ -48,7 +48,7 @@ defineProps(
   <section class="grid-three-columns">
     <div class="grid">
       <h2><prismic-rich-text :field="slice.primary.heading"></prismic-rich-text></h2>
-      <img-ix :field="slice.primary.image"></img-ix>
+      <img-ix v-if="slice.primary.image.url" :field="slice.primary.image"></img-ix>
       <div class="content">
         <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
       </div>
