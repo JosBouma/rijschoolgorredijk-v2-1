@@ -159,11 +159,11 @@ const { data: footer } = await useAsyncData('footer', () => {
         <div class="mid-wrapper">
             <p>Volg Rijschool Gorredijk</p>
             <div class="socials">
-                <nuxt-link>
+                <nuxt-link v-if="footer?.data.facebook.url" :to="footer?.data.facebook.url">
                     <svgo-facebook></svgo-facebook>
                     <span>Facebook</span>
                 </nuxt-link>
-                <nuxt-link>
+                <nuxt-link  v-if="footer?.data.instagram.url" :to="footer?.data.instagram.url">
                     <svgo-instagram></svgo-instagram>
                     <span>Instagram</span>
                 </nuxt-link>
@@ -172,6 +172,7 @@ const { data: footer } = await useAsyncData('footer', () => {
         <div class="bottom-wrapper">
             <nuxt-link :to="footer?.data.termsconditions.url">Algemene voorwaarden</nuxt-link>
             <p>© Rijschool Gorredijk {{ new Date().getFullYear() }}</p>
+            <p>KvK 86570358</p>
         </div>
     </footer>
 </template>

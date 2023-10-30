@@ -119,6 +119,50 @@ interface FooterDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   instagram: prismic.LinkField;
+
+  /**
+   * Telephone text field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.telephone_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  telephone_text: prismic.KeyTextField;
+
+  /**
+   * Telephone link field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.telephone_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  telephone_link: prismic.LinkField;
+
+  /**
+   * Email link field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  email_link: prismic.LinkField;
+
+  /**
+   * Opening hours field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.opening_hours
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  opening_hours: prismic.RichTextField;
 }
 
 /**

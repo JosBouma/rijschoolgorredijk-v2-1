@@ -45,7 +45,7 @@ defineProps(
 </style>
 
 <template>
-  <section class="grid-three-columns">
+  <section class="grid-three-columns" :class="slice.variation">
     <div class="grid">
       <h2><prismic-rich-text :field="slice.primary.heading"></prismic-rich-text></h2>
       <img-ix v-if="slice.primary.image.url" :field="slice.primary.image"></img-ix>

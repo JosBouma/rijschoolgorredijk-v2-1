@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
 
 .slice-hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 1rem;
