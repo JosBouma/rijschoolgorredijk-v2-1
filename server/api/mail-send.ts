@@ -18,7 +18,7 @@ export default defineEventHandler((evt) => {
     // }
     // const body = readBody(evt);
     return renderTemplate(
-        './default.pug',
+        './pug/default.pug',
         {
             statusCode: 200
         }
