@@ -9,20 +9,20 @@ function renderTemplate(file: string, data: object = {}): string {
 }
 
 export default defineEventHandler((evt) => {
-    if('POST' !== getMethod(evt)) {
-        setResponseStatus(evt, 405, 'Method not allowed, bye!');
-        return {
-            statusCode: 406,
-            message: 'Method not allowed'
-        };
-    }
-    const body = readBody(evt);
-    // return renderTemplate(
-    //     './default.pug',
-    //     {
-    //         statusCode: 201
-    //     }
-    // );
+    // if('POST' !== getMethod(evt)) {
+    //     setResponseStatus(evt, 405, 'Method not allowed, bye!');
+    //     return {
+    //         statusCode: 406,
+    //         message: 'Method not allowed'
+    //     };
+    // }
+    // const body = readBody(evt);
+    return renderTemplate(
+        './default.pug',
+        {
+            statusCode: 200
+        }
+    );
     // try {
     //     // const method = getMethod(evt);
     //     // const body = readBody(evt);
