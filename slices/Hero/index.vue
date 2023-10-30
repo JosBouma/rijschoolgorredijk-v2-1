@@ -38,7 +38,6 @@ onBeforeUnmount(() => {
 <style scoped>
 .slice-hero {
   position: relative;
-  z-index: -1;
   margin-bottom: 6rem;
 }
 
@@ -58,6 +57,8 @@ onBeforeUnmount(() => {
 }
 
 .slice-hero-slider>div {
+  position: relative;
+  z-index: -3;
   display: grid;
   grid-row: 1;
   grid-column: 1;
@@ -75,8 +76,6 @@ onBeforeUnmount(() => {
 }
 
 .slice-hero-content {
-  position: relative;
-  z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 1rem;

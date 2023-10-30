@@ -13,6 +13,7 @@ function handleUlClick(evt: MouseEvent) {
 <style scoped>
 .app-nav {
     position: fixed;
+    z-index: 10;
     display: grid;
     grid-template-columns: auto 1fr auto;
     background: #fff;

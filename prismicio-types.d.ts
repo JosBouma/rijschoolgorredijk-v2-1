@@ -143,6 +143,17 @@ interface FooterDocumentData {
   telephone_link: prismic.LinkField;
 
   /**
+   * Email text field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email_text: prismic.KeyTextField;
+
+  /**
    * Email link field in *Footer*
    *
    * - **Field Type**: Link

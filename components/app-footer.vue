@@ -135,20 +135,17 @@ const { data: footer } = await useAsyncData('footer', () => {
                 <section class="left">
                     <h3>Neem contact op</h3>
                     <p class="small">De Buorren 21 8408 HG Lippenhuizen (FR)</p>
-                    <nuxt-link to="tel:+0031633418680">
+                    <nuxt-link :to="footer?.data.telephone_link.url">
                         <svgo-phone></svgo-phone>
-                        <span>0633418680</span>
+                        <span>{{ footer?.data.telephone_text }}</span>
                     </nuxt-link>
-                    <nuxt-link to="mailto:info@rijschoolgorredijk.nl">
+                    <nuxt-link :to="footer?.data.email_link.url">
                         <svgo-envelope></svgo-envelope>
-                        <span>info@rijschoolgorredijk.nl</span>
+                        <span>{{ footer?.data.email_text }}</span>
                     </nuxt-link>
                     <h4>Bereikbaarheid</h4>
                     <div class="opening-hours">
-                        <p>
-                            <span>Maandag tot vrijdag: </span>
-                            <span>8:30 - 17:00</span>
-                        </p>
+                        <prismic-rich-text :field="footer?.data.opening_hours"></prismic-rich-text>
                     </div>
                 </section>
                 <section class="right">
@@ -163,7 +160,7 @@ const { data: footer } = await useAsyncData('footer', () => {
                     <svgo-facebook></svgo-facebook>
                     <span>Facebook</span>
                 </nuxt-link>
-                <nuxt-link  v-if="footer?.data.instagram.url" :to="footer?.data.instagram.url">
+                <nuxt-link v-if="footer?.data.instagram.url" :to="footer?.data.instagram.url">
                     <svgo-instagram></svgo-instagram>
                     <span>Instagram</span>
                 </nuxt-link>
