@@ -173,6 +173,7 @@ const { data: footer } = await useAsyncData('footer', () => {
             <nuxt-link :to="footer?.data.termsconditions.url">Algemene voorwaarden</nuxt-link>
             <p>© Rijschool Gorredijk {{ new Date().getFullYear() }}</p>
             <p>KvK 86570358</p>
+            <p>CBR 2086N2</p>
         </div>
     </footer>
 </template>
