@@ -5,6 +5,74 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *EmailForm → Input text*
+ */
+export interface EmailformDocumentDataInputTextItem {
+  /**
+   * name field in *EmailForm → Input text*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.input_text[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Label field in *EmailForm → Input text*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.input_text[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Content for EmailForm documents
+ */
+interface EmailformDocumentData {
+  /**
+   * Recipient field in *EmailForm*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.recipient
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  recipient: prismic.KeyTextField;
+
+  /**
+   * Input text field in *EmailForm*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.input_text[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  input_text: prismic.GroupField<Simplify<EmailformDocumentDataInputTextItem>>;
+}
+
+/**
+ * EmailForm document from Prismic
+ *
+ * - **API ID**: `emailform`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EmailformDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<EmailformDocumentData>,
+    "emailform",
+    Lang
+  >;
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -457,6 +525,7 @@ export type QuestionanswerDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | EmailformDocument
   | FooterDocument
   | GlobalSettingsDocument
   | IndexDocument
@@ -1141,6 +1210,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      EmailformDocument,
+      EmailformDocumentData,
       FooterDocument,
       FooterDocumentData,
       GlobalSettingsDocument,

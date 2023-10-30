@@ -70,6 +70,10 @@ onBeforeUnmount(() => {
   opacity: 1;
 }
 
+.slice-hero-slider>div>img {
+  margin: auto;
+}
+
 .slice-hero-content {
   position: relative;
   z-index: 2;

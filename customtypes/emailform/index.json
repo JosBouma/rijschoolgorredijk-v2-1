@@ -1,0 +1,46 @@
+{
+  "id": "emailform",
+  "label": "EmailForm",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "recipient": {
+        "type": "Text",
+        "config": {
+          "label": "Recipient",
+          "placeholder": ""
+        }
+      },
+      "input_text": {
+        "type": "Group",
+        "config": {
+          "label": "Input text",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "name",
+                "placeholder": ""
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
