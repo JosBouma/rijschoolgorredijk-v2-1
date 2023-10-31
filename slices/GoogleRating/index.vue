@@ -46,16 +46,26 @@ const ratings = computed(() => {
 
 <style>
 .google-rating {
+  position: relative;
+  z-index: -1;
+  background: #fbfbfb;
+  margin-bottom: 6rem;
+  padding: 4rem 0;
+  box-shadow: 0 -3px 8px #c4c4c4;
+}
+
+.google-rating .container {
   width: fit-content;
+  margin: 0 auto;
   padding: 0 1rem;
-  margin: 0 auto 6rem auto;
   display: grid;
   gap: 1rem;
+  display: flex;
+  align-items: center;
+  color: #0f9d58;
 }
 
 .google-rating .stars {
-  position: relative;
-  z-index: -1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -76,10 +86,6 @@ const ratings = computed(() => {
   background-position: calc(var(--offset) * -1%);
 }
 
-.google-rating .subtext {
-  margin-top: 2rem;
-}
-
 .google-rating .subtext .count {
   font-size: 0.75rem;
 }
@@ -87,15 +93,17 @@ const ratings = computed(() => {
 
 <template>
   <section class="google-rating">
-    <h2>{{ slice.primary.heading }}</h2>
-    <div class="stars">
-      <span v-for="val in ratings" :style="{ '--bg-size': val }">
-        <span></span>
-      </span>
-    </div>
-    <div class="subtext">
-      <p class="count">Aantal beoordelingen: {{ data?.result.user_ratings_total }}</p>
-      <p class="text">{{ slice.primary.subtext }}</p>
+    <div class="container">
+      <h2>{{ slice.primary.heading }}</h2>
+      <div class="stars">
+        <span v-for="val in ratings" :style="{ '--bg-size': val }">
+          <span></span>
+        </span>
+      </div>
+      <div class="subtext">
+        <p class="count">Aantal beoordelingen: {{ data?.result.user_ratings_total }}</p>
+        <p class="text">{{ slice.primary.subtext }}</p>
+      </div>
     </div>
   </section>
 </template>

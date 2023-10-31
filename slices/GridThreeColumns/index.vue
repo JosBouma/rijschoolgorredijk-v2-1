@@ -37,6 +37,10 @@ defineProps(
   font-size: 2rem;
 }
 
+.grid-three-columns .grid .content p {
+  margin-bottom: 1rem;
+}
+
 .grid-three-columns.textMiddle .grid {
   grid-template-columns: auto 1fr auto;
 }

@@ -17,7 +17,7 @@ function handleUlClick(evt: MouseEvent) {
     display: grid;
     grid-template-columns: auto 1fr auto;
     background: #fff;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 25%, rgba(202,240,248,1) 45%, rgba(202,240,248,1) 55%, rgba(255,255,255,1) 75%);
+    background: #fbfbfb;
     top: 0;
     width: inherit;
     max-width: var(--app-max-width);

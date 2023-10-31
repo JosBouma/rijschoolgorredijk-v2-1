@@ -68,6 +68,8 @@ function formatCurrenycy(val: any): string {
 
 .service-pricing .container .footnote p {
   font-size: 0.8rem;
+  max-width: 40rem;
+  margin: 0 auto;
 }
 
 .service-pricing .container .content h3 {
