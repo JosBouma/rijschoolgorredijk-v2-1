@@ -37,6 +37,15 @@ defineProps(
   font-size: 2rem;
 }
 
+.grid-three-columns.textMiddle .grid {
+  grid-template-columns: auto 1fr auto;
+}
+
+.grid-three-columns.textMiddle .grid>img {
+  grid-column: 3;
+  grid-row: 1;
+}
+
 @media screen and (max-width: 60rem) {
   .grid-three-columns .grid {
     grid-template-columns: none;
