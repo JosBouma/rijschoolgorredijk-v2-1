@@ -37,6 +37,7 @@ function formatCurrenycy(val: any): string {
 .service-pricing .container .prices {
   display: grid;
   grid-template-columns: 1fr auto;
+  margin: 0 6vw;
   row-gap: 1rem;
 }
 
