@@ -381,6 +381,7 @@ export type GlobalSettingsDocument<Lang extends string = string> =
   >;
 
 type IndexDocumentDataSlicesSlice =
+  | ServicePricingSlice
   | GoogleRatingSlice
   | InstructorListingSlice
   | JobPostingSlice
@@ -452,6 +453,7 @@ export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | ServicePricingSlice
   | GoogleRatingSlice
   | InstructorListingSlice
   | GridThreeColumnsSlice
@@ -1166,6 +1168,96 @@ export type QuestionAnswerSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ServicePricing → Primary*
+ */
+export interface ServicePricingSliceDefaultPrimary {
+  /**
+   * Heading field in *ServicePricing → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_pricing.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Footnote field in *ServicePricing → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_pricing.primary.footnote
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footnote: prismic.RichTextField;
+
+  /**
+   * Content field in *ServicePricing → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_pricing.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ServicePricing → Items*
+ */
+export interface ServicePricingSliceDefaultItem {
+  /**
+   * Content field in *ServicePricing → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_pricing.items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Price field in *ServicePricing → Items*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_pricing.items[].price
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  price: prismic.NumberField;
+}
+
+/**
+ * Default variation for ServicePricing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServicePricingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServicePricingSliceDefaultPrimary>,
+  Simplify<ServicePricingSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ServicePricing*
+ */
+type ServicePricingSliceVariation = ServicePricingSliceDefault;
+
+/**
+ * ServicePricing Shared Slice
+ *
+ * - **API ID**: `service_pricing`
+ * - **Description**: ServicePricing
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServicePricingSlice = prismic.SharedSlice<
+  "service_pricing",
+  ServicePricingSliceVariation
+>;
+
+/**
  * Primary content in *SimpleTextBlock → Primary*
  */
 export interface SimpleTextBlockSliceDefaultPrimary {
@@ -1313,6 +1405,11 @@ declare module "@prismicio/client" {
       QuestionAnswerSliceDefaultItem,
       QuestionAnswerSliceVariation,
       QuestionAnswerSliceDefault,
+      ServicePricingSlice,
+      ServicePricingSliceDefaultPrimary,
+      ServicePricingSliceDefaultItem,
+      ServicePricingSliceVariation,
+      ServicePricingSliceDefault,
       SimpleTextBlockSlice,
       SimpleTextBlockSliceDefaultPrimary,
       SimpleTextBlockSliceVariation,

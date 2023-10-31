@@ -1,0 +1,61 @@
+{
+  "id": "service_pricing",
+  "type": "SharedSlice",
+  "name": "ServicePricing",
+  "description": "ServicePricing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "footnote": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Footnote",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,list-item,o-list-item,heading3"
+          }
+        }
+      },
+      "items": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "price": {
+          "type": "Number",
+          "config": {
+            "label": "Price",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

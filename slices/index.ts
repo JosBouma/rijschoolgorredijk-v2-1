@@ -19,6 +19,9 @@ export const components = defineSliceZoneComponents({
   question_answer: defineAsyncComponent(
     () => import("./QuestionAnswer/index.vue")
   ),
+  service_pricing: defineAsyncComponent(
+    () => import("./ServicePricing/index.vue")
+  ),
   simple_text_block: defineAsyncComponent(
     () => import("./SimpleTextBlock/index.vue")
   ),

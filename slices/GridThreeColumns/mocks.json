@@ -43,7 +43,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Nulla nisi reprehenderit sunt sint est in dolor officia sunt velit ea duis. Tempor ex cupidatat dolore nostrud pariatur. Lorem ad excepteur cupidatat occaecat."
+							"text": "Occaecat nostrud excepteur ipsum enim ea ut eiusmod ipsum excepteur velit. Excepteur est quis nulla magna irure dolor."
 						}
 					}
 				]
@@ -67,7 +67,6 @@
 				]
 			},
 			"image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
@@ -85,6 +84,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"content": {
@@ -93,7 +95,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Voluptate incididunt magna dolor qui eiusmod excepteur aute sunt velit. Ea aliquip Lorem quis anim enim minim cillum ut."
+							"text": "Labore nulla nulla fugiat commodo do et elit laborum nulla eiusmod irure Lorem. Consequat id nisi sunt aute eiusmod proident officia officia nostrud pariatur esse quis fugiat. Fugiat consequat magna anim adipisicing voluptate laboris officia sit enim nostrud veniam do."
 						}
 					}
 				]

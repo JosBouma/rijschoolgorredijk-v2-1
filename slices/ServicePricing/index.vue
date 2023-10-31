@@ -1,0 +1,98 @@
+<script setup lang="ts">
+import { Content } from "@prismicio/client";
+
+// The array passed to `getSliceComponentProps` is purely optional.
+// Consider it as a visual hint for you when templating your slice.
+defineProps(
+  getSliceComponentProps<Content.ServicePricingSlice>([
+    "slice",
+    "index",
+    "slices",
+    "context",
+  ])
+);
+
+function formatCurrenycy(val: any): string {
+  const amount = parseFloat(val);
+  if(amount === Math.round(amount)) {
+    return `${amount},-`;
+  }
+  return val.toFixed(2).replace('.', ',');
+}
+</script>
+
+<style>
+.service-pricing {
+  margin-bottom: 6rem;
+}
+
+.service-pricing .container {
+  max-width: 70rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 4rem;
+}
+
+.service-pricing .container .prices {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 1rem;
+}
+
+.service-pricing .container .prices > span {
+  border-bottom: 3px solid #000;
+  padding: 1rem;
+}
+
+.service-pricing .container .prices > .content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.service-pricing .container .prices > .content p {
+  font-weight: 500;
+}
+
+.service-pricing .container .prices > .content svg {
+  color: var(--color-primary);
+}
+
+.service-pricing .container .footnote {
+  margin-bottom: 2rem;
+}
+
+.service-pricing .container .footnote p {
+  font-size: 0.8rem;
+}
+
+.service-pricing .container .content h3 {
+  margin-bottom: 2rem;
+}
+</style>
+
+<template>
+  <section class="service-pricing">
+    <div class="container">
+      <h2>{{ slice.primary.heading }}</h2>
+      <div class="prices">
+        <template v-for="item in slice.items">
+          <div class="content">
+            <svgo-chevron></svgo-chevron>
+            <prismic-rich-text :field="item.content"></prismic-rich-text>
+          </div>
+          <span>&nbsp;€ {{ formatCurrenycy(item.price) }}</span>
+        </template>
+      </div>
+      <div class="bottom">
+        <prismic-rich-text :field="slice.primary.footnote" class="footnote"></prismic-rich-text>
+        <div class="content">
+          <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

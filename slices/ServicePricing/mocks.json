@@ -1,0 +1,64 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"footnote": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Duis aliqua non aliquip amet dolor eiusmod sint eiusmod consequat qui eiusmod cupidatat qui consequat ut. Reprehenderit laboris amet ut consectetur mollit irure sint sit labore."
+						}
+					}
+				]
+			},
+			"content": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit cupidatat dolore ea do sint."
+						}
+					}
+				]
+			},
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "entirely",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Esse sunt dolore dolore proident nostrud proident est nisi. Nisi ut nisi aute irure enim aute ipsum et tempor amet fugiat. Qui eu ad do fugiat eiusmod ullamco esse consequat adipisicing anim."
+									}
+								}
+							]
+						}
+					],
+					[
+						"price",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "95",
+							"type": "Number"
+						}
+					]
+				]
+			}
+		]
+	}
+]

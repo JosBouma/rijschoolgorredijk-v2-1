@@ -35,7 +35,7 @@
             "label": "Content",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "multi": "paragraph,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2,heading3"
           }
         }
       },
@@ -72,7 +72,7 @@
             "label": "Content",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "multi": "paragraph,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2,heading3"
           }
         }
       },
