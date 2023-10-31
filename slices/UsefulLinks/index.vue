@@ -15,7 +15,10 @@ defineProps(
 
 <style>
 .useful-links {
+  background: #fbfbfb;
   margin-bottom: 6rem;
+  padding: 4rem 0;
+  box-shadow: 0 -3px 8px #c4c4c4;
 }
 
 .useful-links .container {
