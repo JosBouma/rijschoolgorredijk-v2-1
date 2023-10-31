@@ -381,6 +381,7 @@ export type GlobalSettingsDocument<Lang extends string = string> =
   >;
 
 type IndexDocumentDataSlicesSlice =
+  | UsefulLinksSlice
   | ServicePricingSlice
   | GoogleRatingSlice
   | InstructorListingSlice
@@ -453,6 +454,7 @@ export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | UsefulLinksSlice
   | ServicePricingSlice
   | GoogleRatingSlice
   | InstructorListingSlice
@@ -1347,6 +1349,76 @@ export type UniuqeSellingPointsSlice = prismic.SharedSlice<
   UniuqeSellingPointsSliceVariation
 >;
 
+/**
+ * Primary content in *UsefulLinks → Primary*
+ */
+export interface UsefulLinksSliceDefaultPrimary {
+  /**
+   * Heading field in *UsefulLinks → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: useful_links.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *UsefulLinks → Items*
+ */
+export interface UsefulLinksSliceDefaultItem {
+  /**
+   * Content field in *UsefulLinks → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: useful_links.items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Link field in *UsefulLinks → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: useful_links.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Default variation for UsefulLinks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type UsefulLinksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<UsefulLinksSliceDefaultPrimary>,
+  Simplify<UsefulLinksSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *UsefulLinks*
+ */
+type UsefulLinksSliceVariation = UsefulLinksSliceDefault;
+
+/**
+ * UsefulLinks Shared Slice
+ *
+ * - **API ID**: `useful_links`
+ * - **Description**: UsefulLinks
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type UsefulLinksSlice = prismic.SharedSlice<
+  "useful_links",
+  UsefulLinksSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1418,6 +1490,11 @@ declare module "@prismicio/client" {
       UniuqeSellingPointsSliceDefaultItem,
       UniuqeSellingPointsSliceVariation,
       UniuqeSellingPointsSliceDefault,
+      UsefulLinksSlice,
+      UsefulLinksSliceDefaultPrimary,
+      UsefulLinksSliceDefaultItem,
+      UsefulLinksSliceVariation,
+      UsefulLinksSliceDefault,
     };
   }
 }

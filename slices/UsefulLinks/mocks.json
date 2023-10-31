@@ -1,0 +1,44 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "appearance",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Esse commodo in officia. Tempor dolor aliqua officia est voluptate sint ad reprehenderit do occaecat dolore ullamco."
+									}
+								}
+							]
+						}
+					],
+					[
+						"link",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "http://google.com"
+							}
+						}
+					]
+				]
+			}
+		]
+	}
+]

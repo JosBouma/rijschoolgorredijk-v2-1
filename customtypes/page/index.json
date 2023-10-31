@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "useful_links": {
+              "type": "SharedSlice"
+            },
             "service_pricing": {
               "type": "SharedSlice"
             },

@@ -39,18 +39,17 @@ function formatCurrenycy(val: any): string {
   grid-template-columns: 1fr auto;
   margin: 0 6vw;
   row-gap: 1rem;
+  align-items: end;
 }
 
 .service-pricing .container .prices > span {
   border-bottom: 3px solid #000;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .service-pricing .container .prices > .content {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 20fr;
   border-bottom: 3px solid var(--color-primary);
 }
 
@@ -60,6 +59,7 @@ function formatCurrenycy(val: any): string {
 
 .service-pricing .container .prices > .content svg {
   color: var(--color-primary);
+  margin-top: 0.3rem;
 }
 
 .service-pricing .container .footnote {
@@ -72,6 +72,10 @@ function formatCurrenycy(val: any): string {
 
 .service-pricing .container .content h3 {
   margin-bottom: 2rem;
+}
+
+.service-pricing .container .content p {
+  margin-bottom: 1rem;
 }
 </style>
 

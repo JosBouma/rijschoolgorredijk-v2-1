@@ -28,4 +28,5 @@ export const components = defineSliceZoneComponents({
   uniuqe_selling_points: defineAsyncComponent(
     () => import("./UniuqeSellingPoints/index.vue")
   ),
+  useful_links: defineAsyncComponent(() => import("./UsefulLinks/index.vue")),
 });
