@@ -182,11 +182,11 @@ function handleUlClick(evt: MouseEvent) {
             </nuxt-link>
             <nuxt-link to="mailto:info@rijschoolgorredijk.nl">
                 <svgo-envelope></svgo-envelope>
-                <span>Stuur een e-mail</span>
+                <span>E-mail</span>
             </nuxt-link>
-            <nuxt-link to="#">
+            <nuxt-link to="https://www.startmetjerijbewijs.nl/rijschool-gorredijk/inschrijven">
                 <svgo-user></svgo-user>
-                <span>Portaal</span>
+                <span>Inschrijven</span>
             </nuxt-link>
         </div>
     </nav>
