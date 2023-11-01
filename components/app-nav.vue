@@ -154,13 +154,13 @@ function handleUlClick(evt: MouseEvent) {
                 <nuxt-link to="/over-ons/">Over ons</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/2todrive/">2toDrive</nuxt-link>
+                <nuxt-link to="/lesmethode/">Lesmethode</nuxt-link>
             </li>
             <li>
                 <nuxt-link to="/geslaagden/">Geslaagden</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/lesmethode/">Lesmethode</nuxt-link>
+                <nuxt-link to="/2todrive/">2toDrive</nuxt-link>
             </li>
             <li>
                 <nuxt-link to="/tarieven/">Tarieven</nuxt-link>

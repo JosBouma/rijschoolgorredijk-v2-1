@@ -90,7 +90,7 @@ function formatCurrenycy(val: any): string {
 <template>
   <section class="service-pricing">
     <div class="container">
-      <h2>{{ slice.primary.heading }}</h2>
+      <h1>{{ slice.primary.heading }}</h1>
       <div class="prices">
         <template v-for="item in slice.items">
           <div class="content">
