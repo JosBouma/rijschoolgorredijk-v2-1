@@ -55,28 +55,34 @@ function formatCurrenycy(val: any): string {
 
 .service-pricing .container .prices > .content p {
   font-weight: 500;
+  padding: 1rem 0;
 }
 
 .service-pricing .container .prices > .content svg {
   color: var(--color-primary);
-  margin-top: 0.3rem;
+  margin-top: 1.3rem;
 }
 
-.service-pricing .container .footnote {
+.service-pricing .container .bottom .footnote {
   margin-bottom: 2rem;
 }
 
-.service-pricing .container .footnote p {
+.service-pricing .container .bottom .footnote p {
   font-size: 0.8rem;
   max-width: 40rem;
   margin: 0 auto;
 }
 
-.service-pricing .container .content h3 {
+.service-pricing .container .bottom .content {
+  max-width: 50rem;
+  margin: 0 auto;;
+}
+
+.service-pricing .container .bottom .content h3 {
   margin-bottom: 2rem;
 }
 
-.service-pricing .container .content p {
+.service-pricing .container .bottom .content p {
   margin-bottom: 1rem;
 }
 </style>

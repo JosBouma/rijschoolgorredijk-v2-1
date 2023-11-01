@@ -151,25 +151,25 @@ function handleUlClick(evt: MouseEvent) {
         </nuxt-link>
         <ul :class="{ open: isOpen }" @click="handleUlClick">
             <li>
-                <nuxt-link to="/pagina-1/">Pagina 1</nuxt-link>
+                <nuxt-link to="/over-ons/">Over ons</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/pagina-2/">Pagina 2</nuxt-link>
+                <nuxt-link to="/2todrive/">2toDrive</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/pagina-3/">Pagina 3</nuxt-link>
+                <nuxt-link to="/geslaagden/">Geslaagden</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/pagina-4/">Pagina 4</nuxt-link>
+                <nuxt-link to="/lesmethode/">Lesmethode</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/pagina-5/">Pagina 5</nuxt-link>
+                <nuxt-link to="/tarieven/">Tarieven</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/pagina-6/">Pagina 6</nuxt-link>
+                <nuxt-link to="/vacatures/">Vacatures</nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/pagina-7/">Pagina 7</nuxt-link>
+                <nuxt-link to="/nieuws/">Nieuws</nuxt-link>
             </li>
         </ul>
         <div class="hamburger">

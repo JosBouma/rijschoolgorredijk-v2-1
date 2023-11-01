@@ -15,7 +15,6 @@ defineProps(
 
 <style>
 .unique-selling-points {
-  background: var(--color-tertiary);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -24,6 +23,7 @@ defineProps(
   list-style: none;
   padding: 2rem 0;
   text-align: center;
+  filter: drop-shadow(5px 5px 10px #e7e7e7);
 }
 
 .unique-selling-points li {
@@ -35,11 +35,6 @@ defineProps(
 .unique-selling-points li svg {
   color: var(--color-primary);
   border: 0.5rem solid #fff;
-}
-
-.unique-selling-points li div {
-  border-bottom: 1px solid #c3c3c3;
-  text-shadow: 3px 2px 5px #d1ceff;
 }
 
 @media screen and (max-width: 60rem) {
