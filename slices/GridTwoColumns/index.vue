@@ -57,10 +57,15 @@ const styleVars = {
     gap: 0;
   }
 
+  .grid-two-columns.default > .img {
+    margin: 0 auto -5% auto;
+    position: relative;
+  }
+
   .grid-two-columns.textLeft > .img {
     grid-row: 2;
     grid-column: 1 / -1;
-    margin-top: -3rem;
+    margin: -5% 0 0 4rem;
     position: relative;
   }
 }

@@ -49,15 +49,33 @@ function handleUlClick(evt: MouseEvent) {
     margin: 0;
     padding: 0.4rem 1rem;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     flex-wrap: wrap;
 }
 
 .app-nav ul li a {
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1.20rem;
     font-weight: 700;
     color: var(--color-primary);
+}
+
+.app-nav ul li a::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: var(--color-secondary);
+    display: block;
+    transform: scaleX(0);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: all 0.5s ease-out;
+    transform-origin: left center;
+}
+
+.app-nav ul li a:hover::after {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .hamburger {

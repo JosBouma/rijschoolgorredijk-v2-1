@@ -22,7 +22,7 @@ defineProps(
 
 .grid-three-columns .grid {
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: auto 1fr 2fr;
   gap: 2rem;
   margin: 0 1rem;
 }
@@ -50,7 +50,7 @@ defineProps(
   grid-row: 1;
 }
 
-@media screen and (max-width: 60rem) {
+@media screen and (max-width: 70rem) {
   .grid-three-columns .grid {
     grid-template-columns: none;
   }
