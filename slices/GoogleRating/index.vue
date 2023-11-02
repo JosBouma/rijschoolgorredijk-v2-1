@@ -58,9 +58,10 @@ const ratings = computed(() => {
   width: fit-content;
   margin: 0 auto;
   padding: 0 1rem;
-  display: grid;
   gap: 1rem;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   color: #0f9d58;
 }
@@ -84,6 +85,10 @@ const ratings = computed(() => {
   background-size: 200%;
   --offset: calc((var(--bg-size, 0) * 100));
   background-position: calc(var(--offset) * -1%);
+}
+
+.google-rating .subtext {
+  margin-top: auto;
 }
 
 .google-rating .subtext .count {

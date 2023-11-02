@@ -92,6 +92,19 @@ onBeforeUnmount(() => {
 .slice-hero-content h1 {
   font-size: 3.5rem;
 }
+
+@media screen and (max-width: 60rem) {
+  .slice-hero-content {
+    grid-row: 2;
+    background: #fbfbfb;
+  }
+
+  .slice-hero-content h1,
+  .slice-hero-content h2 {
+    color: var(--color-primary);
+    text-shadow: none;
+  }
+}
 </style>
 
 <template>
@@ -103,9 +116,9 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <div class="slice-hero-content">
-        <h1>{{ slice.primary.heading_1 }}</h1>
-        <h2>{{ slice.primary.heading_2 }}</h2>
-        <nuxt-link :to="$prismic.asLink(slice.primary.cta_link)" class="button">{{ slice.primary.cta_text }}</nuxt-link>
+        <h1 v-if="slice.primary.heading_1">{{ slice.primary.heading_1 }}</h1>
+        <h2 v-if="slice.primary.heading_2">{{ slice.primary.heading_2 }}</h2>
+        <nuxt-link v-if="slice.primary.cta_link.url" :to="$prismic.asLink(slice.primary.cta_link)" class="button">{{ slice.primary.cta_text }}</nuxt-link>
       </div>
     </div>
   </section>

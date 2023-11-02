@@ -65,7 +65,7 @@ defineProps(
   font-size: 1.5rem;
 }
 
-@media screen and (max-width: 30rem) {
+@media screen and (max-width: 40rem) {
   .useful-links .container .links {
     grid-template-columns: none;
   }

@@ -1,6 +1,11 @@
 <script lang="ts" setup>
+const prismic = usePrismic();
+
+const { data: menu } = await useAsyncData('menu', () =>
+  prismic.client.getByUID('menu', 'menu')
+);
+
 const isOpen = useState('hamburgerOpen');
-const route = useRoute();
 
 function handleUlClick(evt: MouseEvent) {
     const target = evt.target as HTMLElement;
@@ -150,7 +155,10 @@ function handleUlClick(evt: MouseEvent) {
             <svgo-logo :fontControlled="false" :filled="true"></svgo-logo>
         </nuxt-link>
         <ul :class="{ open: isOpen }" @click="handleUlClick">
-            <li>
+            <li v-for="item in menu?.data.items">
+                <nuxt-link :to="item.link.url">{{ item.text }}</nuxt-link>
+            </li>
+            <!-- <li>
                 <nuxt-link to="/over-ons/">Over ons</nuxt-link>
             </li>
             <li>
@@ -170,7 +178,7 @@ function handleUlClick(evt: MouseEvent) {
             </li>
             <li>
                 <nuxt-link to="/nieuws/">Nieuws</nuxt-link>
-            </li>
+            </li> -->
         </ul>
         <div class="hamburger">
             <snippet-hamburger></snippet-hamburger>

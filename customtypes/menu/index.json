@@ -1,0 +1,41 @@
+{
+  "id": "menu",
+  "label": "Menu",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "items": {
+        "type": "Group",
+        "config": {
+          "label": "Items",
+          "fields": {
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Text",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "select": "document",
+                "customtypes": ["page", "index"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

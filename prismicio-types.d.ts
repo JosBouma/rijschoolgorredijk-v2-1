@@ -453,6 +453,59 @@ interface IndexDocumentData {
 export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IndexDocumentData>, "index", Lang>;
 
+/**
+ * Item in *Menu → Items*
+ */
+export interface MenuDocumentDataItemsItem {
+  /**
+   * Text field in *Menu → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link field in *Menu → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.ContentRelationshipField<"page" | "index">;
+}
+
+/**
+ * Content for Menu documents
+ */
+interface MenuDocumentData {
+  /**
+   * Items field in *Menu*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<MenuDocumentDataItemsItem>>;
+}
+
+/**
+ * Menu document from Prismic
+ *
+ * - **API ID**: `menu`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MenuDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<MenuDocumentData>, "menu", Lang>;
+
 type PageDocumentDataSlicesSlice =
   | UsefulLinksSlice
   | ServicePricingSlice
@@ -588,6 +641,7 @@ export type AllDocumentTypes =
   | FooterDocument
   | GlobalSettingsDocument
   | IndexDocument
+  | MenuDocument
   | PageDocument
   | QuestionanswerDocument;
 
@@ -1438,6 +1492,8 @@ declare module "@prismicio/client" {
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
+      MenuDocument,
+      MenuDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
