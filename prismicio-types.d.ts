@@ -507,6 +507,7 @@ export type MenuDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MenuDocumentData>, "menu", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | ContactInfoSlice
   | UsefulLinksSlice
   | ServicePricingSlice
   | GoogleRatingSlice
@@ -644,6 +645,71 @@ export type AllDocumentTypes =
   | MenuDocument
   | PageDocument
   | QuestionanswerDocument;
+
+/**
+ * Primary content in *ContactInfo → Primary*
+ */
+export interface ContactInfoSliceDefaultPrimary {
+  /**
+   * Heading 1 field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.heading_1
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_1: prismic.KeyTextField;
+
+  /**
+   * Heading 2 field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.heading_2
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_2: prismic.KeyTextField;
+
+  /**
+   * Image field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ContactInfo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactInfoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactInfoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactInfo*
+ */
+type ContactInfoSliceVariation = ContactInfoSliceDefault;
+
+/**
+ * ContactInfo Shared Slice
+ *
+ * - **API ID**: `contact_info`
+ * - **Description**: ContactInfo
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactInfoSlice = prismic.SharedSlice<
+  "contact_info",
+  ContactInfoSliceVariation
+>;
 
 /**
  * Primary content in *GoogleRating → Primary*
@@ -1500,6 +1566,10 @@ declare module "@prismicio/client" {
       QuestionanswerDocument,
       QuestionanswerDocumentData,
       AllDocumentTypes,
+      ContactInfoSlice,
+      ContactInfoSliceDefaultPrimary,
+      ContactInfoSliceVariation,
+      ContactInfoSliceDefault,
       GoogleRatingSlice,
       GoogleRatingSliceDefaultPrimary,
       GoogleRatingSliceVariation,

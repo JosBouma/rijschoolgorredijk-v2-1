@@ -11,7 +11,7 @@ const { data: footer } = await useAsyncData('footer', () => {
     flex-direction: column;
 }
 
-.app-footer .top-wrapper {
+.app-footer .contact-info-wrapper {
     max-width: 80rem;
     margin: 0 auto;
 }
@@ -60,7 +60,7 @@ const { data: footer } = await useAsyncData('footer', () => {
 
 .mid-wrapper {
     background: var(--color-secondary);
-    margin: 6rem 0 2rem 0;
+    margin: 0 0 2rem 0;
     padding: 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -94,7 +94,7 @@ const { data: footer } = await useAsyncData('footer', () => {
 .bottom-wrapper {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin: 4rem 0;
     padding-bottom: 2rem;
     align-items: center;
     justify-content: center;
@@ -130,7 +130,20 @@ const { data: footer } = await useAsyncData('footer', () => {
 
 <template>
     <footer class="app-footer">
-        <div class="top-wrapper">
+        <div class="mid-wrapper">
+            <p>Volg Rijschool Gorredijk</p>
+            <div class="socials">
+                <nuxt-link v-if="footer?.data.facebook.url" :to="footer?.data.facebook.url">
+                    <svgo-facebook></svgo-facebook>
+                    <span>Facebook</span>
+                </nuxt-link>
+                <nuxt-link v-if="footer?.data.instagram.url" :to="footer?.data.instagram.url">
+                    <svgo-instagram></svgo-instagram>
+                    <span>Instagram</span>
+                </nuxt-link>
+            </div>
+        </div>
+        <div class="contact-info-wrapper">
             <div class="top">
                 <section class="left">
                     <h3>Neem contact op</h3>
@@ -151,19 +164,6 @@ const { data: footer } = await useAsyncData('footer', () => {
                 <section class="right">
                     <img-ix :field="footer?.data.image"></img-ix>
                 </section>
-            </div>
-        </div>
-        <div class="mid-wrapper">
-            <p>Volg Rijschool Gorredijk</p>
-            <div class="socials">
-                <nuxt-link v-if="footer?.data.facebook.url" :to="footer?.data.facebook.url">
-                    <svgo-facebook></svgo-facebook>
-                    <span>Facebook</span>
-                </nuxt-link>
-                <nuxt-link v-if="footer?.data.instagram.url" :to="footer?.data.instagram.url">
-                    <svgo-instagram></svgo-instagram>
-                    <span>Instagram</span>
-                </nuxt-link>
             </div>
         </div>
         <div class="bottom-wrapper">
