@@ -141,12 +141,12 @@ defineProps(
           </p>
           <nuxt-link :to="`tel:${settings?.data.telephone}`">
             <svgo-phone></svgo-phone>
-            <span>TODO: tel</span>
+            <span>{{ slice.primary.telephone_text }}</span>
           </nuxt-link>
-          <p>
+          <nuxt-link :to="`https://wa.me/${settings?.data.telephone}`">
             <svgo-whatsapp></svgo-whatsapp>
-            <span>TODO: whatsapp</span>
-          </p>
+            <span>{{ slice.primary.whatsapp_text }}</span>
+          </nuxt-link>
           <nuxt-link :to="`mailto:${settings?.data.email}`">
             <svgo-envelope></svgo-envelope>
             <span>{{ settings?.data.email }}</span>
@@ -156,6 +156,7 @@ defineProps(
           <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
         </div>
         <div class="gmaps">
+          <p>TODO: maps afbeelding klikbaar</p>
           <img-ix :field="slice.primary.gmaps_image"></img-ix>
         </div>
       </div>
