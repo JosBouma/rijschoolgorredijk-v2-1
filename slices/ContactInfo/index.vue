@@ -32,27 +32,27 @@ defineProps(
   padding: 0 1rem;
 }
 
-.contact-info .container .info .inner {
-  background: var(--color-primary);
-  padding: 4rem 2rem;
-}
-
 .contact-info .container h1 {
   color: var(--color-primary);
 }
 
 .contact-info .container h1,
-.contact-info .container .info h2 {
+.contact-info .container h2 {
   font-size: 2.75rem;
 }
 
-.contact-info .container .info h2 {
+.contact-info .container .mid h2 {
   margin-bottom: 2rem;
-  color: #171717;
 }
 
-.contact-info .container .info .inner p,
-.contact-info .container .info .inner a {
+.contact-info .container .mid .info {
+  background: var(--color-primary);
+  padding: 4rem 2rem;
+  color: #fff;
+}
+
+.contact-info .container .mid .info p,
+.contact-info .container .mid .info a {
   font-size: 1.5rem;
   color: #fff;
   display: grid;
@@ -61,18 +61,63 @@ defineProps(
   margin-bottom: 1rem;
 }
 
-.contact-info .container>img {
-  opacity: 0.8;
+.contact-info .container .mid .footnote {
+  padding: 2rem 20%;
 }
 
-.contact-info .container .info .footnote {
-  padding: 2rem 20%;
-  text-align: justify;
+.contact-info .container .mid .footnote p {
+  margin-bottom: 1rem;
+}
+
+.contact-info .container .right {
+  font-size: 1.5rem;
+}
+
+.contact-info .container .right h3 {
+  margin: 2rem 0;
+}
+
+.contact-info .container .right .opening-hours p {
+  display: grid;
+  margin: 0 5%;
+  grid-template-columns: 3fr 1fr;
+}
+
+.contact-info .container .right .opening-hours p>span {
+  padding: 1rem 0;
+}
+
+.contact-info .container .right .opening-hours p>span:first-child {
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.contact-info .container .right .opening-hours p>span:last-child {
+  border-bottom: 3px solid #000;
 }
 
 @media screen and (max-width: 60rem) {
   .contact-info .container {
     grid-template-columns: none;
+  }
+
+  .contact-info .container .mid .info p,
+  .contact-info .container .mid .info a {
+    grid-template-columns: none;
+    font-size: 1.25rem;
+    text-wrap: wrap;
+    word-wrap: break-word;
+  }
+
+  .contact-info .container .mid .info svg {
+    display: none;
+  }
+
+  .contact-info .container .right .opening-hours {
+    margin-bottom: 18rem;
+  }
+
+  .contact-info .container .right .opening-hours p {
+    grid-template-columns: 1.5fr 1fr;
   }
 }
 </style>
@@ -80,7 +125,53 @@ defineProps(
 <template>
   <section class="contact-info">
     <div class="container">
-      <h1>Contact</h1>
+      <div class="left">
+        <h1>Contact</h1>
+      </div>
+      <div class="mid">
+        <h2>Rijschool Gorredijk</h2>
+        <div class="info">
+          <p>
+            <svgo-home></svgo-home>
+            <span>{{ settings?.data.street_address }}</span>
+          </p>
+          <p>
+            <svgo-home></svgo-home>
+            <span>{{ settings?.data.postal_code }} {{ settings?.data.address_locality }}</span>
+          </p>
+          <nuxt-link :to="`tel:${settings?.data.telephone}`">
+            <svgo-phone></svgo-phone>
+            <span>TODO: tel</span>
+          </nuxt-link>
+          <p>
+            <svgo-whatsapp></svgo-whatsapp>
+            <span>TODO: whatsapp</span>
+          </p>
+          <nuxt-link :to="`mailto:${settings?.data.email}`">
+            <svgo-envelope></svgo-envelope>
+            <span>{{ settings?.data.email }}</span>
+          </nuxt-link>
+        </div>
+        <div class="footnote">
+          <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
+        </div>
+        <div class="gmaps">
+          <img-ix :field="slice.primary.gmaps_image"></img-ix>
+        </div>
+      </div>
+      <div class="right">
+        <img-ix :field="slice.primary.image" loading="eager"></img-ix>
+        <div class="opening-hours">
+          <h3>Openingstijden</h3>
+          <div class="days">
+            <p v-for="item in slice.items">
+              <span>{{ item.day }}&nbsp;</span>
+              <span>{{ item.time }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <h1>Contact</h1>
       <div class="info">
         <h2>Rijschool Gorredijk</h2>
         <div class="inner">
@@ -108,8 +199,11 @@ defineProps(
         <div class="footnote">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id eius, odit fugit repudiandae recusandae accusantium a et vel, soluta animi voluptas natus dignissimos dicta ea, minus ipsa perspiciatis voluptatum tenetur.</p>
         </div>
+        <div class="gmaps">
+          <img-ix :field="slice.primary.gmaps_image"></img-ix>
+        </div>
       </div>
-      <img-ix :field="slice.primary.image" loading="eager"></img-ix>
+      <img-ix :field="slice.primary.image" loading="eager"></img-ix> -->
     </div>
   </section>
 </template>

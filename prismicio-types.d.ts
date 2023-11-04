@@ -671,6 +671,36 @@ export interface ContactInfoSliceDefaultPrimary {
   heading_2: prismic.KeyTextField;
 
   /**
+   * Telephone text field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.telephone_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  telephone_text: prismic.KeyTextField;
+
+  /**
+   * Whatsapp text field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.whatsapp_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  whatsapp_text: prismic.KeyTextField;
+
+  /**
+   * Content field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
    * Image field in *ContactInfo → Primary*
    *
    * - **Field Type**: Image
@@ -679,6 +709,41 @@ export interface ContactInfoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Gmaps image field in *ContactInfo → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.primary.gmaps_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  gmaps_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ContactInfo → Items*
+ */
+export interface ContactInfoSliceDefaultItem {
+  /**
+   * Day field in *ContactInfo → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.items[].day
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  day: prismic.KeyTextField;
+
+  /**
+   * Time field in *ContactInfo → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.items[].time
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  time: prismic.KeyTextField;
 }
 
 /**
@@ -691,7 +756,7 @@ export interface ContactInfoSliceDefaultPrimary {
 export type ContactInfoSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<ContactInfoSliceDefaultPrimary>,
-  never
+  Simplify<ContactInfoSliceDefaultItem>
 >;
 
 /**
@@ -1568,6 +1633,7 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       ContactInfoSlice,
       ContactInfoSliceDefaultPrimary,
+      ContactInfoSliceDefaultItem,
       ContactInfoSliceVariation,
       ContactInfoSliceDefault,
       GoogleRatingSlice,

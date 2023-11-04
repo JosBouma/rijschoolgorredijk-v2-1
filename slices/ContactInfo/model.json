@@ -26,6 +26,29 @@
             "placeholder": ""
           }
         },
+        "telephone_text": {
+          "type": "Text",
+          "config": {
+            "label": "Telephone text",
+            "placeholder": ""
+          }
+        },
+        "whatsapp_text": {
+          "type": "Text",
+          "config": {
+            "label": "Whatsapp text",
+            "placeholder": ""
+          }
+        },
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading3,strong,em,hyperlink,list-item,o-list-item"
+          }
+        },
         "image": {
           "type": "Image",
           "config": {
@@ -33,9 +56,32 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "gmaps_image": {
+          "type": "Image",
+          "config": {
+            "label": "Gmaps image",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
-      "items": {}
+      "items": {
+        "day": {
+          "type": "Text",
+          "config": {
+            "label": "Day",
+            "placeholder": ""
+          }
+        },
+        "time": {
+          "type": "Text",
+          "config": {
+            "label": "Time",
+            "placeholder": ""
+          }
+        }
+      }
     }
   ]
 }
