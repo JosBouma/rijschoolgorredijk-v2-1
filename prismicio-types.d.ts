@@ -545,8 +545,7 @@ interface IndexDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<IndexDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<IndexDocumentDataSlicesSlice> /**
    * Meta Description field in *Index*
    *
    * - **Field Type**: Text
@@ -672,8 +671,7 @@ interface PageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
    * Meta Description field in *Page*
    *
    * - **Field Type**: Text
@@ -1218,7 +1216,7 @@ export interface HeroSliceDefaultPrimary {
    * Heading 2 field in *Hero → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Koptekst H2
    * - **API ID Path**: hero.primary.heading_2
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -1747,7 +1745,7 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig
+      options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
   }
 
@@ -1755,20 +1753,26 @@ declare module "@prismicio/client" {
     export type {
       EmailformDocument,
       EmailformDocumentData,
+      EmailformDocumentDataRecipientsItem,
+      EmailformDocumentDataRequiredFieldsItem,
+      EmailformDocumentDataFieldsItem,
       FooterDocument,
       FooterDocumentData,
       GlobalSettingsDocument,
       GlobalSettingsDocumentData,
+      GlobalSettingsDocumentDataOpeningHoursItem,
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
       MenuDocument,
       MenuDocumentData,
+      MenuDocumentDataItemsItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       QuestionanswerDocument,
       QuestionanswerDocumentData,
+      QuestionanswerDocumentDataItemsItem,
       AllDocumentTypes,
       ContactInfoSlice,
       ContactInfoSliceDefaultPrimary,

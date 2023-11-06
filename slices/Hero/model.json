@@ -23,7 +23,7 @@
           "type": "Text",
           "config": {
             "label": "Heading 2",
-            "placeholder": ""
+            "placeholder": "Koptekst H2"
           }
         },
         "cta_text": {

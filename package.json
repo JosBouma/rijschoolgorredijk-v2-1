@@ -17,14 +17,14 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/prismic": "^3.0.2",
-    "@slicemachine/adapter-nuxt": "^0.3.17",
+    "@slicemachine/adapter-nuxt": "^0.3.23",
     "@types/node": "^18",
     "@types/pug": "^2.0.8",
     "concurrently": "^8.1.0",
     "eslint": "^8.42.0",
-    "nuxt": "^3.7.3",
+    "nuxt": "^3.8.1",
     "nuxt-svgo": "^3.5.3",
-    "slice-machine-ui": "^1.14.1"
+    "slice-machine-ui": "^1.19.1"
   },
   "dependencies": {
     "mailgun.js": "^9.3.0",
