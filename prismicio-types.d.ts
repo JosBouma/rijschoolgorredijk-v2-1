@@ -5,28 +5,110 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
- * Item in *EmailForm → Input text*
+ * Item in *EmailForm → Recipients*
  */
-export interface EmailformDocumentDataInputTextItem {
+export interface EmailformDocumentDataRecipientsItem {
   /**
-   * name field in *EmailForm → Input text*
+   * Email field in *EmailForm → Recipients*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: emailform.input_text[].name
+   * - **API ID Path**: emailform.recipients[].email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+}
+
+/**
+ * Item in *EmailForm → Required fields*
+ */
+export interface EmailformDocumentDataRequiredFieldsItem {
+  /**
+   * Name field in *EmailForm → Required fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.required_fields[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+}
+
+/**
+ * Item in *EmailForm → Fields*
+ */
+export interface EmailformDocumentDataFieldsItem {
+  /**
+   * Type field in *EmailForm → Fields*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Text
+   * - **API ID Path**: emailform.fields[].type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  type: prismic.SelectField<
+    | "Text"
+    | "TextArea"
+    | "Select"
+    | "Radio"
+    | "Checkbox"
+    | "Email"
+    | "Number"
+    | "Date",
+    "filled"
+  >;
+
+  /**
+   * Name field in *EmailForm → Fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.fields[].name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
 
   /**
-   * Label field in *EmailForm → Input text*
+   * Label field in *EmailForm → Fields*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: emailform.input_text[].label
+   * - **API ID Path**: emailform.fields[].label
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * Value field in *EmailForm → Fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.fields[].value
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  value: prismic.KeyTextField;
+
+  /**
+   * Selected field in *EmailForm → Fields*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: emailform.fields[].selected
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  selected: prismic.BooleanField;
+
+  /**
+   * Placeholder field in *EmailForm → Fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.fields[].placeholder
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  placeholder: prismic.KeyTextField;
 }
 
 /**
@@ -34,26 +116,83 @@ export interface EmailformDocumentDataInputTextItem {
  */
 interface EmailformDocumentData {
   /**
-   * Recipient field in *EmailForm*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: emailform.recipient
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  recipient: prismic.KeyTextField;
-
-  /**
-   * Input text field in *EmailForm*
+   * Recipients field in *EmailForm*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: emailform.input_text[]
+   * - **API ID Path**: emailform.recipients[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  input_text: prismic.GroupField<Simplify<EmailformDocumentDataInputTextItem>>;
+  recipients: prismic.GroupField<Simplify<EmailformDocumentDataRecipientsItem>>;
+
+  /**
+   * From field in *EmailForm*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.from
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  from: prismic.KeyTextField;
+
+  /**
+   * Subject field in *EmailForm*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.subject
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subject: prismic.KeyTextField;
+
+  /**
+   * Reply to field in *EmailForm*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.reply_to
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  reply_to: prismic.KeyTextField;
+
+  /**
+   * Domain field in *EmailForm*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.domain
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  domain: prismic.KeyTextField;
+
+  /**
+   * Required fields field in *EmailForm*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.required_fields[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  required_fields: prismic.GroupField<
+    Simplify<EmailformDocumentDataRequiredFieldsItem>
+  >;
+
+  /**
+   * Fields field in *EmailForm*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.fields[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  fields: prismic.GroupField<Simplify<EmailformDocumentDataFieldsItem>>;
 }
 
 /**

@@ -12,22 +12,91 @@
         },
         "type": "UID"
       },
-      "recipient": {
+      "recipients": {
+        "type": "Group",
+        "config": {
+          "label": "Recipients",
+          "fields": {
+            "email": {
+              "type": "Text",
+              "config": {
+                "label": "Email",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "from": {
         "type": "Text",
         "config": {
-          "label": "Recipient",
+          "label": "From",
           "placeholder": ""
         }
       },
-      "input_text": {
+      "subject": {
+        "type": "Text",
+        "config": {
+          "label": "Subject",
+          "placeholder": ""
+        }
+      },
+      "reply_to": {
+        "type": "Text",
+        "config": {
+          "label": "Reply to",
+          "placeholder": ""
+        }
+      },
+      "domain": {
+        "type": "Text",
+        "config": {
+          "label": "Domain",
+          "placeholder": ""
+        }
+      },
+      "required_fields": {
         "type": "Group",
         "config": {
-          "label": "Input text",
+          "label": "Required fields",
           "fields": {
             "name": {
               "type": "Text",
               "config": {
-                "label": "name",
+                "label": "Name",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "fields": {
+        "type": "Group",
+        "config": {
+          "label": "Fields",
+          "fields": {
+            "type": {
+              "type": "Select",
+              "config": {
+                "label": "Type",
+                "placeholder": "",
+                "options": [
+                  "Text",
+                  "TextArea",
+                  "Select",
+                  "Radio",
+                  "Checkbox",
+                  "Email",
+                  "Number",
+                  "Date"
+                ],
+                "default_value": "Text"
+              }
+            },
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
                 "placeholder": ""
               }
             },
@@ -35,6 +104,29 @@
               "type": "Text",
               "config": {
                 "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "value": {
+              "type": "Text",
+              "config": {
+                "label": "Value",
+                "placeholder": ""
+              }
+            },
+            "selected": {
+              "type": "Boolean",
+              "config": {
+                "label": "Selected",
+                "default_value": false,
+                "placeholder_true": "true",
+                "placeholder_false": "false"
+              }
+            },
+            "placeholder": {
+              "type": "Text",
+              "config": {
+                "label": "Placeholder",
                 "placeholder": ""
               }
             }
