@@ -5,7 +5,7 @@
 		"primary": {
 			"heading_1": {
 				"__TYPE__": "FieldContent",
-				"value": "dark",
+				"value": "method",
 				"type": "Text"
 			},
 			"heading_2": {

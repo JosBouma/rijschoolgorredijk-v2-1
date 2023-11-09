@@ -16,7 +16,7 @@
           "type": "Text",
           "config": {
             "label": "Heading 1",
-            "placeholder": ""
+            "placeholder": "Kopteskt H1"
           }
         },
         "heading_2": {

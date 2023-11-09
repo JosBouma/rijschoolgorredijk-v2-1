@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Content } from "@prismicio/client";
+import { type Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -21,7 +21,7 @@ defineProps(
 }
 
 .instructor-listing .inner {
-  max-width: 100rem;
+  max-width: 60rem;
   padding: 0 1rem;
   margin: 0 auto 0 auto;
 }
@@ -40,30 +40,45 @@ defineProps(
 
 .instructor-listing .item {
   display: grid;
-  text-align: center;
+  grid-template-columns: auto 1fr;
   background: #fff;
-  padding: 1rem;
-  max-width: 22rem;
-  padding-bottom: 2rem;
+  padding: 4rem;
   border-radius: 1rem;
   filter: drop-shadow(10px, 10px, 10px, #000);
+  column-gap: 3rem;
+  align-items: center;
 }
 
 .instructor-listing .item img {
   border-radius: 20%;
-  margin: 2rem auto;
-  box-shadow: 14px 13px 24px #d1eefd;
+  box-shadow: 14px 13px 24px #939393;
 }
 
 .instructor-listing .item h3 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  text-align: center;
   margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 30rem) {
-  .instructor-listing .items {
-    padding: 0 1rem;
-    display: grid;
-    gap: 4rem;
+.instructor-listing .item .rte {
+  display: grid;
+  row-gap: 1rem;
+}
+
+@media screen and (max-width: 60rem) {
+  .instructor-listing .item {
+    grid-template-columns: none;
+    padding: 4rem 2rem;
+  }
+
+  .instructor-listing .item img {
+    display: block;
+    margin: 0 auto 4rem auto;
+  }
+
+  .instructor-listing .item .rte {
+    margin: 0 1rem;
   }
 }
 </style>
@@ -74,9 +89,11 @@ defineProps(
       <h2>Onze instructeurs</h2>
       <div class="items">
         <div v-for="item in slice.items" class="item">
-          <img-ix :field="item.image"></img-ix>
-          <h3>{{ item.name }}</h3>
-          <prismic-rich-text :field="item.description"></prismic-rich-text>
+          <div>
+            <h3>{{ item.name }}</h3>
+            <img-ix :field="item.image"></img-ix>
+          </div>
+          <prismic-rich-text class="rte" :field="item.description"></prismic-rich-text>
         </div>
       </div>
     </div>

@@ -129,6 +129,13 @@
                 "label": "Placeholder",
                 "placeholder": ""
               }
+            },
+            "error_message": {
+              "type": "Text",
+              "config": {
+                "label": "Error message",
+                "placeholder": ""
+              }
             }
           }
         }

@@ -3,6 +3,16 @@ import { Content, Client } from "@prismicio/client";
 import pug from 'pug';
 import FormData from 'form-data';
 import Mailgun from 'mailgun.js';
+import { z } from 'zod';
+
+enum InputType {
+    Text = 'Text',
+    TextArea = 'TextArea',
+    Select = 'Select',
+    Radio = 'Radio',
+    Checkbox = 'Checkbox',
+    Number = 'Number'
+}
 
 interface RequestBody {
     fields: {
@@ -11,65 +21,38 @@ interface RequestBody {
 }
 
 interface ResponseBody {
-    statusCode: number,
-    statusMessage: string,
-    validation: Array<
-        {
-            name: string;
-            errorMessage: string
-        }
-    >;
+    statusCode: number;
+    statusMessage: string;
+    validation: any[];
 }
 
 const client = new Client(repositoryName);
 const tplFn = pug.compileFile('./pug/default.pug');
 
-function validate(form: Content.EmailformDocument, data: RequestBody): Array<{ name: string, errorMessage: string }> {
-    const errors: Array<{ name: string, errorMessage: string }> = [];
-    const fields: { [name: string]: string } = {};
-    const types: { [name: string]: string } = {};
-    for (const field of form.data.fields) {
-        fields[field.name as string] = data.fields[field.name as string];
-        types[field.name as string] = field.type;
-    }
+function createSchema(form: Content.EmailformDocument) {
+    const required: { [name: string]: boolean } = {};
+    const schema: any = {};
     for (const item of form.data.required_fields) {
-        const name = item.name as string;
-        if (!(name in data.fields)) {
-            errors.push({
-                name: name,
-                errorMessage: 'Dit veld is verplicht'
-            });
-            continue;
-        }
-        switch (types[name]) {
-            case 'Text':
-                if (!String(data.fields[name]).trim()) {
-                    errors.push({
-                        name: name,
-                        errorMessage: 'Dit veld is verplicht'
-                    });
-                }
-                break;
-            case 'Number':
-                if (isNaN(parseFloat(data.fields[name]))) {
-                    errors.push({
-                        name: name,
-                        errorMessage: 'Dit veld moet een getal zijn'
-                    });
-                }
-                break;
-        }
+        required[item.name as string] = true;
     }
-    return errors;
-}
-
-function extractFields(form: Content.EmailformDocument, data: RequestBody): RequestBody {
-    const fields: { [idx: string]: string } = {};
     for (const item of form.data.fields) {
-        fields[item.name as string] = data.fields[item.name as string];
+        const name = item.name as string;
+        switch (item.type) {
+            case InputType.Text:
+                schema[name] = z.string();
+                if (required[name]) {
+                    schema[name] = schema[name].min(2, item.error_message);
+                }
+                break;
+            case InputType.Number:
+                schema[name] = z.any();
+                if (required[name]) {
+                    schema[name] = z.number();
+                }
+                break;
+        }
     }
-    data.fields = fields;
-    return data;
+    return schema;
 }
 
 async function sendMail(form: Content.EmailformDocument, data: RequestBody): Promise<boolean> {
@@ -88,62 +71,65 @@ async function sendMail(form: Content.EmailformDocument, data: RequestBody): Pro
         html: tplFn(data)
     };
 
-    if(form.data.reply_to && form.data.reply_to in data.fields) {
+    if (form.data.reply_to && form.data.reply_to in data.fields) {
         message['h:Reply-To'] = data.fields[form.data.reply_to];
     }
 
-    const response = await client.messages.create(form.data.domain as string, message);
     return true;
+
+    const response = await client.messages.create(form.data.domain as string, message);
+    return 200 === response.status;
 }
 
-export default defineEventHandler(async (evt) => {
-    let body: ResponseBody = {
+export default defineEventHandler<{ body: RequestBody, query: { uid: string } }>(async (evt) => {
+    const body: ResponseBody = {
         statusCode: 500,
-        statusMessage: 'Internet fout',
+        statusMessage: 'Interne fout',
         validation: []
     };
-    try {
-        // if('POST' !== evt.method) {
-        //     body.statusCode = 405;
-        //     throw new Error('Methode niet toegestaan');
-        // }
-        // const inputBody = await readBody(evt);
-        const inputBody: RequestBody = {
-            fields: {
-                naam: 'Bla',
-                blaat: 'Niet bestaand veld'
-            }
-        };
 
-        const form = await client.getByUID('emailform', 'contact-formulier') as Content.EmailformDocument;
+    const query = getQuery(evt);
+
+    try {
+        if ('POST' !== evt.method) {
+            body.statusCode = 405;
+            throw new Error('Methode niet toegestaan');
+        }
+
+        const form = await client.getByUID('emailform', query.uid) as Content.EmailformDocument;
+
         if (!form) {
             body.statusCode = 404;
             throw new Error('Formulier niet gevonden');
         }
 
-        body.validation = validate(form, inputBody);
-        if (0 !== body.validation.length) {
-            body.statusCode = 406;
+        let inputBody = await readBody<any>(evt);
+        const schema = z.object(createSchema(form)).strict();
+        console.log('Validatiing', inputBody);
+        console.log('Schema', schema.safeParse(inputBody));
+        const schemaResult = schema.safeParse(inputBody);
+
+        if (!schemaResult.success) {
+            body.statusCode = 200;
+            body.validation = schemaResult.error.issues;
             throw new Error('Ongeldige invoer');
         }
 
-        const result = await sendMail(form, extractFields(form, inputBody));
+        const mgResult = await sendMail(form, inputBody);
 
-        if (!result) {
+        if (!mgResult) {
             throw new Error('Fout bij verzenden vam mail');
         }
 
         body.statusCode = 200;
         body.statusMessage = 'Bericht verzonden';
     } catch (e) {
-        console.error('Error caught', e);
-        body.statusCode = 500;
         body.statusMessage = (e as Error).message;
     }
 
-    setHeaders(evt, {
-        'Content-Type': 'application/json'
-    });
+    // setHeaders(evt, {
+    //     'Content-Type': 'application/json'
+    // });
     // console.log('Mailgun key', process.env.MAILGUN_KEY);
     setResponseStatus(evt, body.statusCode, body.statusMessage);
     return body;
