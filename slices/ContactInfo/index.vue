@@ -157,7 +157,6 @@ defineProps(
         </div>
         <div class="gmaps">
           <nuxt-link to="https://maps.app.goo.gl/8nBGx7d6Y5mpW9Cz9">
-            <!-- <span>Bekijk ons op Google Maps</span> -->
             <img-ix :field="slice.primary.gmaps_image"></img-ix>
           </nuxt-link>
         </div>
