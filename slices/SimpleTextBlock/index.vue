@@ -24,7 +24,7 @@ defineProps(
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 6rem auto;
+  margin: 0 auto 4rem auto;
 }
 </style>
 

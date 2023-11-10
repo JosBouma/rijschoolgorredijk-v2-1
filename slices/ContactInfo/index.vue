@@ -156,8 +156,10 @@ defineProps(
           <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
         </div>
         <div class="gmaps">
-          <p>TODO: maps afbeelding klikbaar</p>
-          <img-ix :field="slice.primary.gmaps_image"></img-ix>
+          <nuxt-link to="https://maps.app.goo.gl/8nBGx7d6Y5mpW9Cz9">
+            <!-- <span>Bekijk ons op Google Maps</span> -->
+            <img-ix :field="slice.primary.gmaps_image"></img-ix>
+          </nuxt-link>
         </div>
       </div>
       <div class="right">
@@ -172,39 +174,6 @@ defineProps(
           </div>
         </div>
       </div>
-      <!-- <h1>Contact</h1>
-      <div class="info">
-        <h2>Rijschool Gorredijk</h2>
-        <div class="inner">
-          <p>
-            <svgo-chevron></svgo-chevron>
-            <span>{{ settings?.data.street_address }}</span>
-          </p>
-          <p>
-            <svgo-chevron></svgo-chevron>
-            <span>{{ settings?.data.postal_code }} {{ settings?.data.address_locality }}</span>
-          </p>
-          <p>
-            <svgo-chevron></svgo-chevron>
-            <span>TODO: tel</span>
-          </p>
-          <p>
-            <svgo-chevron></svgo-chevron>
-            <span>TODO: whatsapp</span>
-          </p>
-          <nuxt-link :to="`mailto:${settings?.data.email}`">
-            <svgo-envelope></svgo-envelope>
-            <span>{{ settings?.data.email }}</span>
-          </nuxt-link>
-        </div>
-        <div class="footnote">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id eius, odit fugit repudiandae recusandae accusantium a et vel, soluta animi voluptas natus dignissimos dicta ea, minus ipsa perspiciatis voluptatum tenetur.</p>
-        </div>
-        <div class="gmaps">
-          <img-ix :field="slice.primary.gmaps_image"></img-ix>
-        </div>
-      </div>
-      <img-ix :field="slice.primary.image" loading="eager"></img-ix> -->
     </div>
   </section>
 </template>

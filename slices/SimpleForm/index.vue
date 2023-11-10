@@ -42,10 +42,11 @@ if (form) {
 }
 
 async function submitForm() {
+  errors.value = {};
   try {
     loading.value = true;
     // let url = `/api/mail-send?uid=${encodeURIComponent(props.slice.primary.form.uid)}`;
-    const repsonse = await $fetch<ResponseBody>('/api/mail-send', {
+    const res = await $fetch<ResponseBody>('/api/mail-send', {
       method: 'POST',
       query: {
         uid: props.slice.primary.form.uid
@@ -53,8 +54,7 @@ async function submitForm() {
       body: fields.value
     });
 
-    repsonse.validation = repsonse.validation || [];
-    for (const err of repsonse.validation) {
+    for (const err of res.validation) {
       errors.value[err.path[0] as string] = err;
     }
   } catch (e) {

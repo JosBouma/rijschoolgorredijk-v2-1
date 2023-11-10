@@ -83,8 +83,6 @@
                 "options": [
                   "Text",
                   "TextArea",
-                  "Select",
-                  "Radio",
                   "Checkbox",
                   "Email",
                   "Number",

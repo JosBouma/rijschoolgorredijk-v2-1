@@ -44,7 +44,7 @@ defineProps(
   background: #fff;
   padding: 4rem;
   border-radius: 1rem;
-  filter: drop-shadow(10px, 10px, 10px, #000);
+  filter: drop-shadow(1px, 1px, 1px, #000);
   column-gap: 3rem;
   align-items: center;
 }
@@ -86,7 +86,7 @@ defineProps(
 <template>
   <section class="instructor-listing">
     <div class="inner">
-      <h2>Onze instructeurs</h2>
+      <h2>{{ slice.primary.heading }}</h2>
       <div class="items">
         <div v-for="item in slice.items" class="item">
           <div>

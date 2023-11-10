@@ -51,7 +51,7 @@ const { data: footer } = await useAsyncData('footer', () => {
 }
 
 .app-footer .top .left h4 {
-    margin-top: auto;
+    margin-top: 2rem;
 }
 
 .app-footer .top h3 {
@@ -84,6 +84,7 @@ const { data: footer } = await useAsyncData('footer', () => {
     display: flex;
     align-items: center;
     gap: 1rem;
+    color: var(--color-primary);
 }
 
 .mid-wrapper .socials a svg,

@@ -24,6 +24,7 @@ defineProps(
   padding: 2rem 0;
   text-align: center;
   filter: drop-shadow(5px 5px 10px #e7e7e7);
+  margin-bottom: 4rem;
 }
 
 .unique-selling-points li {

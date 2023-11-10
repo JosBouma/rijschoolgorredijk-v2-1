@@ -21,7 +21,7 @@ defineProps(
 
 .grid-three-columns .grid {
   display: grid;
-  grid-template-columns: auto 1fr 2fr;
+  grid-template-columns: 1fr auto 3fr;
   gap: 2rem;
   margin: 0 1rem;
 }
@@ -36,12 +36,17 @@ defineProps(
   font-size: 2rem;
 }
 
+.grid-three-columns .grid > h2 {
+  padding: 1rem;
+  background: #ededed;
+}
+
 .grid-three-columns .grid .content p {
   margin-bottom: 1rem;
 }
 
 .grid-three-columns.textMiddle .grid {
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr 3fr auto;
 }
 
 .grid-three-columns.textMiddle .grid>img {

@@ -32,22 +32,31 @@ const tplFn = pug.compileFile('./pug/default.pug');
 function createSchema(form: Content.EmailformDocument) {
     const required: { [name: string]: boolean } = {};
     const schema: any = {};
+    
     for (const item of form.data.required_fields) {
         required[item.name as string] = true;
     }
+
     for (const item of form.data.fields) {
         const name = item.name as string;
+        
         switch (item.type) {
             case InputType.Text:
+            case InputType.TextArea:
                 schema[name] = z.string();
                 if (required[name]) {
                     schema[name] = schema[name].min(2, item.error_message);
                 }
                 break;
             case InputType.Number:
-                schema[name] = z.any();
-                if (required[name]) {
-                    schema[name] = z.number();
+                schema[name] = z.coerce.number({
+                    required_error: item.error_message as string
+                }).positive({
+                    message: item.error_message as string
+                });
+
+                if (!required[name]) {
+                    schema[name] = schema[name].optional();
                 }
                 break;
         }
@@ -106,7 +115,6 @@ export default defineEventHandler<{ body: RequestBody, query: { uid: string } }>
         let inputBody = await readBody<any>(evt);
         const schema = z.object(createSchema(form)).strict();
         console.log('Validatiing', inputBody);
-        console.log('Schema', schema.safeParse(inputBody));
         const schemaResult = schema.safeParse(inputBody);
 
         if (!schemaResult.success) {
@@ -114,6 +122,8 @@ export default defineEventHandler<{ body: RequestBody, query: { uid: string } }>
             body.validation = schemaResult.error.issues;
             throw new Error('Ongeldige invoer');
         }
+
+        body.validation = [];
 
         const mgResult = await sendMail(form, inputBody);
 
@@ -127,10 +137,6 @@ export default defineEventHandler<{ body: RequestBody, query: { uid: string } }>
         body.statusMessage = (e as Error).message;
     }
 
-    // setHeaders(evt, {
-    //     'Content-Type': 'application/json'
-    // });
-    // console.log('Mailgun key', process.env.MAILGUN_KEY);
     setResponseStatus(evt, body.statusCode, body.statusMessage);
     return body;
 });

@@ -48,14 +48,7 @@ export interface EmailformDocumentDataFieldsItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   type: prismic.SelectField<
-    | "Text"
-    | "TextArea"
-    | "Select"
-    | "Radio"
-    | "Checkbox"
-    | "Email"
-    | "Number"
-    | "Date",
+    "Text" | "TextArea" | "Checkbox" | "Email" | "Number" | "Date",
     "filled"
   >;
 
@@ -1297,6 +1290,21 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *InstructorListing → Primary*
+ */
+export interface InstructorListingSliceDefaultPrimary {
+  /**
+   * Heading field in *InstructorListing → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructor_listing.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *InstructorListing → Items*
  */
 export interface InstructorListingSliceDefaultItem {
@@ -1340,7 +1348,7 @@ export interface InstructorListingSliceDefaultItem {
  */
 export type InstructorListingSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<InstructorListingSliceDefaultPrimary>,
   Simplify<InstructorListingSliceDefaultItem>
 >;
 
@@ -1867,6 +1875,7 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       InstructorListingSlice,
+      InstructorListingSliceDefaultPrimary,
       InstructorListingSliceDefaultItem,
       InstructorListingSliceVariation,
       InstructorListingSliceDefault,
