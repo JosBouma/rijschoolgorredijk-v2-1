@@ -48,14 +48,7 @@ export interface EmailformDocumentDataFieldsItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   type: prismic.SelectField<
-    | "Text"
-    | "TextArea"
-    | "Select"
-    | "Radio"
-    | "Checkbox"
-    | "Email"
-    | "Number"
-    | "Date",
+    "Text" | "TextArea" | "Checkbox" | "Email" | "Number" | "Date",
     "filled"
   >;
 
@@ -109,6 +102,16 @@ export interface EmailformDocumentDataFieldsItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder: prismic.KeyTextField;
+
+  /**
+   * Error message field in *EmailForm → Fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emailform.fields[].error_message
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  error_message: prismic.KeyTextField;
 }
 
 /**
@@ -545,8 +548,7 @@ interface IndexDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<IndexDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<IndexDocumentDataSlicesSlice> /**
    * Meta Description field in *Index*
    *
    * - **Field Type**: Text
@@ -646,6 +648,7 @@ export type MenuDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<MenuDocumentData>, "menu", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | SimpleFormSlice
   | ContactInfoSlice
   | UsefulLinksSlice
   | ServicePricingSlice
@@ -672,8 +675,7 @@ interface PageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
    * Meta Description field in *Page*
    *
    * - **Field Type**: Text
@@ -1208,7 +1210,7 @@ export interface HeroSliceDefaultPrimary {
    * Heading 1 field in *Hero → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Kopteskt H1
    * - **API ID Path**: hero.primary.heading_1
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -1218,7 +1220,7 @@ export interface HeroSliceDefaultPrimary {
    * Heading 2 field in *Hero → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Koptekst H2
    * - **API ID Path**: hero.primary.heading_2
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -1288,6 +1290,21 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *InstructorListing → Primary*
+ */
+export interface InstructorListingSliceDefaultPrimary {
+  /**
+   * Heading field in *InstructorListing → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: instructor_listing.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *InstructorListing → Items*
  */
 export interface InstructorListingSliceDefaultItem {
@@ -1331,7 +1348,7 @@ export interface InstructorListingSliceDefaultItem {
  */
 export type InstructorListingSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<InstructorListingSliceDefaultPrimary>,
   Simplify<InstructorListingSliceDefaultItem>
 >;
 
@@ -1584,6 +1601,61 @@ export type ServicePricingSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SimpleForm → Primary*
+ */
+export interface SimpleFormSliceDefaultPrimary {
+  /**
+   * Heading field in *SimpleForm → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: simple_form.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Form field in *SimpleForm → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: simple_form.primary.form
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  form: prismic.ContentRelationshipField<"emailform">;
+}
+
+/**
+ * Default variation for SimpleForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SimpleFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SimpleForm*
+ */
+type SimpleFormSliceVariation = SimpleFormSliceDefault;
+
+/**
+ * SimpleForm Shared Slice
+ *
+ * - **API ID**: `simple_form`
+ * - **Description**: SimpleForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleFormSlice = prismic.SharedSlice<
+  "simple_form",
+  SimpleFormSliceVariation
+>;
+
+/**
  * Primary content in *SimpleTextBlock → Primary*
  */
 export interface SimpleTextBlockSliceDefaultPrimary {
@@ -1747,7 +1819,7 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig
+      options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
   }
 
@@ -1755,20 +1827,26 @@ declare module "@prismicio/client" {
     export type {
       EmailformDocument,
       EmailformDocumentData,
+      EmailformDocumentDataRecipientsItem,
+      EmailformDocumentDataRequiredFieldsItem,
+      EmailformDocumentDataFieldsItem,
       FooterDocument,
       FooterDocumentData,
       GlobalSettingsDocument,
       GlobalSettingsDocumentData,
+      GlobalSettingsDocumentDataOpeningHoursItem,
       IndexDocument,
       IndexDocumentData,
       IndexDocumentDataSlicesSlice,
       MenuDocument,
       MenuDocumentData,
+      MenuDocumentDataItemsItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       QuestionanswerDocument,
       QuestionanswerDocumentData,
+      QuestionanswerDocumentDataItemsItem,
       AllDocumentTypes,
       ContactInfoSlice,
       ContactInfoSliceDefaultPrimary,
@@ -1797,6 +1875,7 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       InstructorListingSlice,
+      InstructorListingSliceDefaultPrimary,
       InstructorListingSliceDefaultItem,
       InstructorListingSliceVariation,
       InstructorListingSliceDefault,
@@ -1813,6 +1892,10 @@ declare module "@prismicio/client" {
       ServicePricingSliceDefaultItem,
       ServicePricingSliceVariation,
       ServicePricingSliceDefault,
+      SimpleFormSlice,
+      SimpleFormSliceDefaultPrimary,
+      SimpleFormSliceVariation,
+      SimpleFormSliceDefault,
       SimpleTextBlockSlice,
       SimpleTextBlockSliceDefaultPrimary,
       SimpleTextBlockSliceVariation,

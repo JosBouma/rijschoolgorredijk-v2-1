@@ -83,8 +83,6 @@
                 "options": [
                   "Text",
                   "TextArea",
-                  "Select",
-                  "Radio",
                   "Checkbox",
                   "Email",
                   "Number",
@@ -127,6 +125,13 @@
               "type": "Text",
               "config": {
                 "label": "Placeholder",
+                "placeholder": ""
+              }
+            },
+            "error_message": {
+              "type": "Text",
+              "config": {
+                "label": "Error message",
                 "placeholder": ""
               }
             }

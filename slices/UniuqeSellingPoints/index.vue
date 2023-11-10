@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Content } from "@prismicio/client";
+import { type Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -24,6 +24,7 @@ defineProps(
   padding: 2rem 0;
   text-align: center;
   filter: drop-shadow(5px 5px 10px #e7e7e7);
+  margin-bottom: 4rem;
 }
 
 .unique-selling-points li {

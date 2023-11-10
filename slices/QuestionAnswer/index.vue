@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Content } from "@prismicio/client";
-import { WithContext, FAQPage, Question } from 'schema-dts';
+import { type Content } from "@prismicio/client";
+import { type WithContext, type FAQPage, type Question } from 'schema-dts';
 
 const prismic = usePrismic();
 

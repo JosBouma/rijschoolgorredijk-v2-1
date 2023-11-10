@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Content } from "@prismicio/client";
+import { type Content } from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -22,12 +22,12 @@ const styleVars = {
   max-width: 100rem;
   display: grid;
   margin: 0 auto 6rem auto;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 8%;
 }
 
 .grid-two-columns.textLeft {
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 2fr 1fr;
 }
 
 .grid-two-columns > .img {
