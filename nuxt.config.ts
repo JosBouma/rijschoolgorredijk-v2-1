@@ -97,4 +97,10 @@ export default defineNuxtConfig({
       ]
     }
   },
+
+  generate: {
+    routes: [
+      '/contact-test'
+    ]
+  }
 })
