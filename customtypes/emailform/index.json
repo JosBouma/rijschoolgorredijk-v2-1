@@ -80,14 +80,7 @@
               "config": {
                 "label": "Type",
                 "placeholder": "",
-                "options": [
-                  "Text",
-                  "TextArea",
-                  "Checkbox",
-                  "Email",
-                  "Number",
-                  "Date"
-                ],
+                "options": ["Text", "TextArea", "Email", "Number", "Date"],
                 "default_value": "Text"
               }
             },

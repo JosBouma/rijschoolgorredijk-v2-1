@@ -48,7 +48,7 @@ export interface EmailformDocumentDataFieldsItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   type: prismic.SelectField<
-    "Text" | "TextArea" | "Checkbox" | "Email" | "Number" | "Date",
+    "Text" | "TextArea" | "Email" | "Number" | "Date",
     "filled"
   >;
 

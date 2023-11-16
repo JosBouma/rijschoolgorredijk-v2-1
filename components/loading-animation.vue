@@ -1,7 +1,8 @@
 <style>
 .loading-animation {
-    width: 44rem;
-    height: 4rem;
+    --color: #000;
+    width: fit-content;
+    height: fit-content;
 }
 
 .loading-animation::after {
@@ -10,8 +11,8 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    border: 4px solid #000;
-    border-color: #000 transparent #000 transparent;
+    border: 4px solid var(--color);
+    border-color: var(--color) transparent var(--color) transparent;
     animation: loading-animation 1.2s linear infinite reverse;
 }
 

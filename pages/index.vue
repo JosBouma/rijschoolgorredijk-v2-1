@@ -19,7 +19,7 @@ useSeoMeta({
   description: page.value?.data.meta_description
 });
 
-import { WithContext, LocalBusiness } from 'schema-dts';
+import type { WithContext, LocalBusiness } from 'schema-dts';
 
 const children: WithContext<LocalBusiness> = {
   '@context': 'https://schema.org',

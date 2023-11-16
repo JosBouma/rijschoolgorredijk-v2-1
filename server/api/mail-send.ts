@@ -8,10 +8,8 @@ import { z } from 'zod';
 enum InputType {
     Text = 'Text',
     TextArea = 'TextArea',
-    Select = 'Select',
-    Radio = 'Radio',
-    Checkbox = 'Checkbox',
-    Number = 'Number'
+    Number = 'Number',
+    Email = 'Email'
 }
 
 interface RequestBody {
@@ -39,13 +37,23 @@ function createSchema(form: Content.EmailformDocument) {
 
     for (const item of form.data.fields) {
         const name = item.name as string;
-        
+        const msg = item.error_message || '';
+        schema[name] = z.string();
         switch (item.type) {
             case InputType.Text:
-            case InputType.TextArea:
-                schema[name] = z.string();
                 if (required[name]) {
-                    schema[name] = schema[name].min(2, item.error_message);
+                    schema[name] = z.string().min(2, msg);
+                }
+                break;
+            case InputType.TextArea:
+                if (required[name]) {
+                    schema[name] = z.string().min(10, msg);
+                }
+                break;
+            case InputType.Email:
+                schema[name] = z.string().email(msg);
+                if (!required[name]) {
+                    schema[name] = z.string().email(msg).optional();
                 }
                 break;
             case InputType.Number:
