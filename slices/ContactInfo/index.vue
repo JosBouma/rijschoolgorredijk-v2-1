@@ -16,6 +16,37 @@ defineProps(
     "context",
   ])
 );
+
+const gmaps = ref<HTMLDivElement | null>(null);
+
+onMounted(async () => {
+  const el = gmaps.value as HTMLDivElement;
+  // @ts-ignore
+  (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+    ({ key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg", v: "weekly" });
+  // @ts-ignore
+  const { Map: mapApi } = await google.maps.importLibrary("maps");
+  // @ts-ignore
+  const { AdvancedMarkerElement: markerApi } = await google.maps.importLibrary("marker");
+  const latLng = {
+    lat: parseFloat(settings.value?.data.latitude as string),
+    lng: parseFloat(settings.value?.data.longitude as string),
+  };
+  console.log(latLng);
+  const map = new mapApi(
+    el,
+    {
+      zoom: 4,
+      center: latLng,
+      mapId: 'DEMO_MAP_ID',
+    }
+  );
+  const marker = new markerApi({
+    map: map,
+    position: latLng,
+    title: settings.value?.data.name
+  });
+});
 </script>
 
 <style>
@@ -155,7 +186,7 @@ defineProps(
         <div class="footnote">
           <prismic-rich-text :field="slice.primary.content"></prismic-rich-text>
         </div>
-        <div class="gmaps">
+        <div class="gmaps" ref="gmaps">
           <nuxt-link to="https://maps.app.goo.gl/8nBGx7d6Y5mpW9Cz9">
             <img-ix :field="slice.primary.gmaps_image"></img-ix>
           </nuxt-link>

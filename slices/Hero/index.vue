@@ -67,6 +67,10 @@ onBeforeUnmount(() => {
   will-change: opacity;
 }
 
+.slice-hero-slider>div:first-child {
+  opacity: 1;
+}
+
 .slice-hero-slider>div.active {
   opacity: 1;
 }
@@ -110,7 +114,7 @@ onBeforeUnmount(() => {
 <template>
   <section class="slice-hero" :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
     <div class="slice-hero-inner">
-      <div class="slice-hero-slider">
+      <div class="slice-hero-slider inactive">
         <div v-for="item in slice.items">
           <img-ix v-if="item.image.url" :field="item.image" loading="eager" priority="high"></img-ix>
         </div>
