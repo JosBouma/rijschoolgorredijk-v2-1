@@ -98,7 +98,7 @@ const ratings = computed(() => {
 
 <template>
   <section class="google-rating">
-    <div class="container">
+    <!-- <div class="container">
       <h2>{{ slice.primary.heading }}</h2>
       <div class="stars">
         <span v-for="val in ratings" :style="{ '--bg-size': val }">
@@ -106,9 +106,9 @@ const ratings = computed(() => {
         </span>
       </div>
       <div class="subtext">
-        <p class="count">Aantal beoordelingen: {{ data?.result?.user_ratings_total }}</p>
+        <p class="count">Aantal beoordelingen: {{ data?.result?.user_ratings_total || 'Tijdelijk niet beschikbaar' }}</p>
         <p class="text">{{ slice.primary.subtext }}</p>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
