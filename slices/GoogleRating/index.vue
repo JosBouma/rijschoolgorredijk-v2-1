@@ -40,7 +40,7 @@ function ratingArray(value: number, len: number = 5): number[] {
 }
 
 const ratings = computed(() => {
-  return ratingArray(data.value?.result.rating as number);
+  return ratingArray(data.value?.result?.rating as number);
 });
 </script>
 
@@ -106,7 +106,7 @@ const ratings = computed(() => {
         </span>
       </div>
       <div class="subtext">
-        <p class="count">Aantal beoordelingen: {{ data?.result.user_ratings_total }}</p>
+        <p class="count">Aantal beoordelingen: {{ data?.result?.user_ratings_total }}</p>
         <p class="text">{{ slice.primary.subtext }}</p>
       </div>
     </div>

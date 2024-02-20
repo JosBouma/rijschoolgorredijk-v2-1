@@ -1,11 +1,5 @@
 export default defineEventHandler(async () => {
-    // return {
-    //     result: {
-    //         rating: 5,
-    //         user_ratings_total: 2
-    //     }
-    // }
-    return await $fetch(
+    const result = await $fetch(
         'https://maps.googleapis.com/maps/api/place/details/json',
         {
             params: {
@@ -15,4 +9,6 @@ export default defineEventHandler(async () => {
             }
         }
     );
+    console.log('Rating res', result);
+    return result;
 })
