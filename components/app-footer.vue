@@ -132,7 +132,7 @@ const { data: footer } = await useAsyncData('footer', () => {
 <template>
     <footer class="app-footer">
         <div class="mid-wrapper">
-            <p>Volg Rijschool Gorredijk</p>
+            <p>Volg ons</p>
             <div class="socials">
                 <nuxt-link v-if="footer?.data.facebook.url" :to="footer?.data.facebook.url">
                     <svgo-facebook></svgo-facebook>
@@ -157,6 +157,10 @@ const { data: footer } = await useAsyncData('footer', () => {
                         <svgo-envelope></svgo-envelope>
                         <span>{{ footer?.data.email_text }}</span>
                     </nuxt-link>
+                    <nuxt-link to="mailto:info@rijschoolakkrum.nl">
+                        <svgo-envelope></svgo-envelope>
+                        <span>info@rijschoolakkrum.nl</span>
+                    </nuxt-link>
                     <h4>Bereikbaarheid</h4>
                     <div class="opening-hours">
                         <prismic-rich-text :field="footer?.data.opening_hours"></prismic-rich-text>
@@ -169,6 +173,7 @@ const { data: footer } = await useAsyncData('footer', () => {
         </div>
         <div class="bottom-wrapper">
             <nuxt-link :to="footer?.data.termsconditions.url">Algemene voorwaarden</nuxt-link>
+            <nuxt-link :to="footer?.data?.privacystatement?.url || '#'">Privacy</nuxt-link>
             <p>© Rijschool Gorredijk {{ new Date().getFullYear() }}</p>
             <p>KvK 86570358</p>
             <p>CBR 2086N2</p>

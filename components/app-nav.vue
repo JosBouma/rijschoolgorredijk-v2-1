@@ -170,33 +170,12 @@ function handleUlClick(evt: MouseEvent) {
 <template>
     <nav class="app-nav">
         <nuxt-link to="/" @click="isOpen = false">
-            <svgo-logo :fontControlled="false" :filled="true"></svgo-logo>
+            <svgo-logo-v2 :fontControlled="false" :filled="true"></svgo-logo-v2>
         </nuxt-link>
         <ul :class="{ open: isOpen }" @click="handleUlClick">
             <li v-for="item in menu?.data.items">
                 <nuxt-link :to="item.link.url">{{ item.text }}</nuxt-link>
             </li>
-            <!-- <li>
-                <nuxt-link to="/over-ons/">Over ons</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="/lesmethode/">Lesmethode</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="/geslaagden/">Geslaagden</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="/2todrive/">2toDrive</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="/tarieven/">Tarieven</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="/vacatures/">Vacatures</nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="/nieuws/">Nieuws</nuxt-link>
-            </li> -->
         </ul>
         <div class="hamburger">
             <snippet-hamburger></snippet-hamburger>

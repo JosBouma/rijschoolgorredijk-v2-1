@@ -161,6 +161,7 @@ onMounted(async () => {
       </div>
       <div class="mid">
         <h2>Rijschool Gorredijk</h2>
+        <h2>Rijschool Akkrum e.o.</h2>
         <div class="info">
           <p>
             <svgo-home></svgo-home>
@@ -181,6 +182,10 @@ onMounted(async () => {
           <nuxt-link :to="`mailto:${settings?.data.email}`">
             <svgo-envelope></svgo-envelope>
             <span>{{ settings?.data.email }}</span>
+          </nuxt-link>
+          <nuxt-link :to="`mailto:info@rijschoolakkrum.nl`">
+            <svgo-envelope></svgo-envelope>
+            <span>info@rijschoolakkrum.nl</span>
           </nuxt-link>
         </div>
         <div class="footnote">

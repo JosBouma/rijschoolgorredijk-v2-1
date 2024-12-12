@@ -29,6 +29,14 @@
           "select": "media"
         }
       },
+      "privacystatement": {
+        "type": "Link",
+        "config": {
+          "label": "PrivacyStatement",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "facebook": {
         "type": "Link",
         "config": {

@@ -12,6 +12,16 @@
 				"__TYPE__": "FieldContent",
 				"value": "trap",
 				"type": "Text"
+			},
+			"rating": {
+				"__TYPE__": "FieldContent",
+				"value": "74",
+				"type": "Number"
+			},
+			"review_amount": {
+				"__TYPE__": "FieldContent",
+				"value": "86",
+				"type": "Number"
 			}
 		},
 		"items": []

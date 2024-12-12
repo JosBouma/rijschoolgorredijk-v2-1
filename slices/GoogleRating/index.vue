@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { type Content } from "@prismicio/client";
 
-interface RatingResult {
-  result: {
-    rating: number;
-    user_ratings_total: number;
-  }
-}
-
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
 defineProps(
@@ -18,8 +11,6 @@ defineProps(
     "context",
   ])
 );
-
-const { data } = await useFetch<RatingResult>('/api/googlerating');
 
 function ratingArray(value: number, len: number = 5): number[] {
   const result = [];
@@ -40,7 +31,7 @@ function ratingArray(value: number, len: number = 5): number[] {
 }
 
 const ratings = computed(() => {
-  return ratingArray(data.value?.result?.rating as number);
+  return ratingArray(5);
 });
 </script>
 
@@ -98,7 +89,7 @@ const ratings = computed(() => {
 
 <template>
   <section class="google-rating">
-    <!-- <div class="container">
+    <div class="container">
       <h2>{{ slice.primary.heading }}</h2>
       <div class="stars">
         <span v-for="val in ratings" :style="{ '--bg-size': val }">
@@ -106,9 +97,9 @@ const ratings = computed(() => {
         </span>
       </div>
       <div class="subtext">
-        <p class="count">Aantal beoordelingen: {{ data?.result?.user_ratings_total || 'Tijdelijk niet beschikbaar' }}</p>
+        <p class="count">Aantal beoordelingen: {{ slice.primary.review_amount || 'Tijdelijk niet beschikbaar' }}</p>
         <p class="text">{{ slice.primary.subtext }}</p>
       </div>
-    </div> -->
+    </div>
   </section>
 </template>

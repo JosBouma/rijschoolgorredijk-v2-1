@@ -19,6 +19,20 @@
             "placeholder": ""
           }
         },
+        "rating": {
+          "type": "Number",
+          "config": {
+            "label": "Rating",
+            "placeholder": ""
+          }
+        },
+        "review_amount": {
+          "type": "Number",
+          "config": {
+            "label": "Review amount",
+            "placeholder": ""
+          }
+        },
         "subtext": {
           "type": "Text",
           "config": {

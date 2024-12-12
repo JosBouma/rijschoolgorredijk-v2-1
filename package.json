@@ -23,7 +23,7 @@
     "@types/pug": "^2.0.8",
     "concurrently": "^8.1.0",
     "eslint": "^8.42.0",
-    "nuxt": "^3.8.1",
+    "nuxt": "^3.14.1592",
     "nuxt-svgo": "^3.5.3",
     "slice-machine-ui": "^1.19.1"
   },
