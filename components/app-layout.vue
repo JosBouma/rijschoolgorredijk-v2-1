@@ -1,22 +1,20 @@
 <style>
-#app-layout {
-    position: relative;
-    width: 100%;
-    max-width: var(--app-max-width);
-    margin: 0 auto;
+:root {
+  --menu-height: 98px;
+  --app-max-width: 2440px;
 }
 
-#app-layout>.content {
-    padding-top: 12rem;
+body {
+  font-family: "Poppins";
 }
 </style>
 
 <template>
-    <div id="app-layout">
-        <app-nav></app-nav>
-        <div class="content">
-            <slot></slot>
-        </div>
-        <app-footer></app-footer>
+  <div class="max-w-[--app-max-width]">
+    <app-nav></app-nav>
+    <div class="relative -z-10">
+      <slot></slot>
     </div>
+    <app-footer></app-footer>
+  </div>
 </template>

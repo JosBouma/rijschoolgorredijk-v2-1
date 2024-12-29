@@ -1,22 +1,5 @@
 import { repositoryName } from './slicemachine.config.json'
 
-interface Font {
-  name: string
-  sizes: string[]
-}
-
-function generateGFontURL(fonts: Font[]): string {
-  if (!fonts.length) {
-    return ''
-  }
-  const url = new URL('https://fonts.googleapis.com/css2')
-  for (const font of fonts) {
-    url.searchParams.append('family', `${font.name}:wght@${font.sizes.join(';')}`)
-  }
-  url.searchParams.append('display', 'swap')
-  return url.toString()
-}
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -55,31 +38,15 @@ export default defineNuxtConfig({
           href: 'https://images.prismic.io/',
           crossorigin: ''
         },
-        {
-          rel: 'stylesheet',
-          href: generateGFontURL([
-            {
-              name: 'Poppins',
-              sizes: [
-                '400',
-                '500'
-              ]
-            }
-          ])
-        }
       ],
     },
   },
 
-  css: [
-    '~/assets/css/normalize.css',
-    '~/assets/css/framework.css'
-  ],
-
-  modules: [
-    '@nuxtjs/prismic',
-    'nuxt-svgo',
-  ],
+  modules: ['@nuxtjs/prismic', 'nuxt-svgo', '@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/image'],
+  
+  image: {
+    provider: 'prismic'
+  },
 
   prismic: {
     endpoint: repositoryName,
@@ -97,10 +64,4 @@ export default defineNuxtConfig({
       ]
     }
   },
-
-  generate: {
-    routes: [
-      '/contact-test'
-    ]
-  }
 })
