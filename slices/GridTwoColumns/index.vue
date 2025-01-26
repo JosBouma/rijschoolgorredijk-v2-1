@@ -18,7 +18,7 @@ const styleVars = {
 </script>
 
 <style>
-.grid-two-columns {
+/* .grid-two-columns {
   max-width: 100rem;
   display: grid;
   margin: 0 auto 6rem auto;
@@ -68,7 +68,7 @@ const styleVars = {
     margin: -5% 0 0 4rem;
     position: relative;
   }
-}
+} */
 </style>
 
 <template>

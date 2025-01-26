@@ -2,7 +2,7 @@
 import type { Content } from "@prismicio/client";
 import { components } from '~/slices';
 
-const page = await $fetch(
+const { data: page } = await useFetch<Content.PageDocument>(
   '/api/page/index'
 );
 
@@ -67,7 +67,6 @@ const page = await $fetch(
 
 <template>
   <app-layout>
-     <!-- @vue-expect-error -->
     <SliceZone wrapper="main" :slices="page?.data.slices || []" :components="components" />
   </app-layout>
 </template>

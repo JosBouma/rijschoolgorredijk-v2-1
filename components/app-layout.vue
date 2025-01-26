@@ -10,9 +10,9 @@ body {
 </style>
 
 <template>
-  <div class="max-w-[--app-max-width]">
+  <div class="max-w-[--app-max-width] mx-auto">
     <app-nav></app-nav>
-    <div class="relative -z-10">
+    <div class="relative z-0 bg-gray-100">
       <slot></slot>
     </div>
     <app-footer></app-footer>

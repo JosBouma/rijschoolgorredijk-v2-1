@@ -41,9 +41,9 @@ const menu = computed(() => {
 <template>
   <div ref="root">
     <div class="h-[--menu-height] mb-8"></div>
-    <nav class="fixed top-0 left-0 bg-white w-full max-w-[--app-max-width] shadow-md">
-      <div class="relative flex items-center p-4 lg:justify-around">
-        <nuxt-link to="/" @click="open = false">
+    <nav class="fixed z-10 top-0 left-0 bg-white w-full shadow-md">
+      <div class="relative flex items-center p-4 lg:justify-around w-fit mx-auto">
+        <nuxt-link class="pr-8" to="/" @click="open = false">
           <svgo-logo-v2 aria-hidden="true" :fontControlled="false" :filled="true" class="w-48 lg:w-64" />
           <span class="sr-only">Home</span>
         </nuxt-link>

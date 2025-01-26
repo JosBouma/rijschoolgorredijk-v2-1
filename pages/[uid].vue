@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-// import { components } from '~/slices';
+import { components } from '~/slices';
+import type { Content } from "@prismicio/client";
+const { params } = useRoute();
+const uid = encodeURIComponent(params.uid as string);
+
+const { data: page } = await useFetch<Content.PageDocument>(
+  `/api/page/${uid}`
+);
 
 // const prismic = usePrismic();
 // const { params } = useRoute();
